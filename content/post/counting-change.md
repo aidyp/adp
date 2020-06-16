@@ -6,7 +6,7 @@ title: "Counting Change"
 
 
 
-## Hello World
+### Hello World
 
 
 
@@ -69,11 +69,11 @@ def make_change(amount):
 
 
 
+------
 
 
 
-
-## Don't be greedy
+### Don't be greedy
 
 The "counting change" problem came up again during my first year of university. I was in an afternoon lecture on the theory of computation. My lecturer used my solution to the problem as a throwaway example of a "greedy algorithm". I thought the title rather appropriate.
 
@@ -88,13 +88,19 @@ input  : 27
 output : 10, 10, 1, 1, 1, 1, 1, 1, 1
 ```
 
-Our greedy program fails. For `27`, the minimal change is 3 coins, as $27 = 9 + 9 + 9$.
+For `27`, the minimal change is 3 coins (as $27 = 9 + 9 + 9$). Our greedy algorithm spits out 9!
 
-## Changing Perspectives
+I thought about this for a bit, but the class moved on. The next topic was Dijkstra's Algorithm, finding the shortest path from A to B. Dijkstra made sure to avoid any distractions, so I decided to do the same.
 
-This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving problems like this so that, at an interview with a top tech firm, you can solve a problem like this.
+### Changing Perspective
+
+This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this.
 
 That's the trick. When you encounter a new problem, it's much easier if you know the solution to a related problem.
+
+Recall the earlier example, with coins 1p, 9p, 10p. 
+
+// To Do, write the example
 
 
 
