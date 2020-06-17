@@ -79,16 +79,16 @@ The "counting change" problem came up again during my first year of university. 
 
 
 
-Then he introduced a spanner into the works. Suppose we loosen the constraints on change and allow non-standard coins. Instead of 1p, 5p, 10p, coins, we might have 1p, 9p, 10p. How does our greedy algorithm hold up?
+Then he introduced a spanner into the works. Suppose we loosen the constraints on change and allow non-standard coins. Instead of 1p, 5p, 10p, coins, we might have 1p, 3p, 4p. How does our greedy algorithm hold up?
 
 Not well.
 
 ```
-input  : 27
-output : 10, 10, 1, 1, 1, 1, 1, 1, 1
+input  : 6
+output : 4, 1, 1
 ```
 
-For `27`, the minimal change is 3 coins (as $27 = 9 + 9 + 9$). Our greedy algorithm spits out 9!
+For `6`, the minimal change is 2 coins (as $6 = 3 * 2$). Our greedy algorithm spits out 3. 
 
 I thought about this for a bit, but the class moved on. The next topic was Dijkstra's Algorithm, finding the shortest path from A to B. Dijkstra made sure to avoid any distractions, so I decided to do the same.
 
@@ -96,13 +96,21 @@ I thought about this for a bit, but the class moved on. The next topic was Dijks
 
 This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this.
 
-That's the trick. When you encounter a new problem, it's much easier if you know the solution to a related problem.
+That's the trick. When you encounter a new problem, it's much easier if you remember the solution to a related problem. 
 
-Recall the earlier example, with coins 1p, 9p, 10p. 
+Recall the conditions that crashed our greedy algorithm, `coins = [1, 3, 4], input = 6`.  The correct answer is 2 coins, as 6 = 2 * 3. You didn't have to calculate this, you knew it. To be more precise, you _remembered_ it. Primary school maths teachers drilled times tables into your memory. They installed into your brain a sort of lookup table. 
 
-// To Do, write the example
+This lookup table is not very large. For most of us, it stops at 12. The human mind has far more interesting things to commit to memory than a table of numbers. Computers, on the other hand, do not. And they can remember a great deal. 
 
+This idea, that it can be faster to remember an answer than to calculate it, is a fundamental pillar in algorithmic thinking. We call it "time vs space complexity."
 
+Applying this idea to our problem, we can construct a table of coins to value. It might look something like this,
+
+| coins/value | 1    | 2    | 3    | 4    | 5    | 6    |
+| ----------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **1**       | 1    | 2    | 3    | 4    | 5    | 6    |
+| **3**       | -    | -    | 1    | -    | -    | 2    |
+| **4**       | -    | -    | -    | 1    | -    | -    |
 
 
 
