@@ -6,7 +6,7 @@ title: "Counting Change"
 
 
 
-### Hello World
+## hello world
 
 
 
@@ -73,7 +73,7 @@ def make_change(amount):
 
 
 
-### Don't Be Naive
+## don't be naive
 
 The "counting change" problem came up again during my first year of university. I was in an afternoon lecture on the theory of computation. My lecturer used my solution to the problem as a throwaway example of a "greedy algorithm". I thought the title rather appropriate.
 
@@ -106,7 +106,7 @@ I tried to think about an efficient way to compute all these possibilities, but 
 
 
 
-### Changing Perspective
+## changing perspective
 
 This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this. The change counting problem was one of them. I coded up the naive solution, and submitted it. My program ran, and failed. It had taken too long. As the number to make change from increases, the number of possible coin combinations grows exponentially. A new approach is needed.
 
@@ -136,59 +136,59 @@ At first our table contains only the basics. By inspection, we can fill out some
 
 I want to draw your attention to three cells, **[2,1]**, **[5,4]**, and **[6,3]**. 
 
-#### [2,1] | 2 = 1 + 1
+##### [2,1] | 2 = 1 + 1
 
 If you have one penny, add a second and you get two pennies. Abstracting a little, we know the optimal solution for the *value*, 1. It follows that the optimal solution for the *value*, 2, is the optimal solution for 1, add one extra coin. 
 
-Suppose we define a function, O(), that takes as input the change you want, and returns the minimum number of coins. We know,
+Suppose we define a function, C(), that takes as input the amount you want to make change from, and returns the minimum number of coins required. We know,
 
-$$O(1) = 1$$
+$$C(1) = 1$$
 
-because you just use the *coin*, 1. Then,
+because you just use the 1p coin. Then,
 
-$$O(2) = O(1) + \text{one coin}$$
+$$C(2) = C(1) + \text{one coin}$$
 
 In that case, that extra coin is the 1p coin. So,
 
-$$O(2) = 2$$
+$$C(2) = 2$$
 
-####  [5,4] | 5 = 4 + 1
+#####  [5,4] | 5 = 4 + 1
 
 Let's apply the same logic as before. We know,
 
-$$O(4) = 1$$
+$$C(4) = 1$$
 
 because you use the *coin*, 4. Then,
 
-$$O(5) = O(4) + \text{one coin}$$
+$$C(5) = C(4) + \text{one coin}$$
 
 Again, that extra coin is the 1p coin. So,
 
-$$O(5) = O(4) + 1 = 2$$
+$$C(5) = C(4) + 1 = 2$$
 
-#### [6,3] | 6 = 3 + 3
+##### [6,3] | 6 = 3 + 3
 
 It first seems that the method breaks down. 
 
-$$O(5) = 2$$
+$$C(5) = 2$$
 
 from above. Then,
 
-$$O(6) = O(5) + \text{one coin} = O(5) + 1 = 3$$
+$$C(6) = C(5) + \text{one coin} = C(5) + 1 = 3$$
 
 Which we know to be wrong. Looking a little closer we realise that,
 
-$$O(3) = 1 $$
+$$C(3) = 1 $$
 
 and,
 
-$$O(6) = O(3) + \text{one coin}$$ 
+$$C(6) = C(3) + \text{one coin}$$ 
 
 This time, that extra coin is the 3p coin. It's still just _one_ extra coin though, so,
 
-$$O(6) = O(3) + 1 = 2$$
+$$C(6) = C(3) + 1 = 2$$
 
-#### [?,?] | m = n + 1
+##### [?,?] | m = n + 1
 
 There is a common theme with all of these examples. Each one is obtained by adding one coin to a value we already know. Expressing it another way,
 
@@ -196,25 +196,33 @@ $$\text{new change needed} = \text{old change needed} + \text{one extra coin}$$
 
 Or,
 
-$$O(m) = O(n) + 1, \quad n < m$$
+$$C(m) = C(n) + 1, \quad n < m$$
 
-Every value of change is one coin more than another, smaller value of change. We have three coins to choose from, (1, 3, 4). This leaves us with three cases. 
+The new solution will be one coin more than an old solution. We have three coins to choose from, (1, 3, 4). This leaves us with three cases. 
 
-$$\text{(1)} \quad O(m) = O(m - 1) + 1, \quad \text{For the 1p coin}$$
+$$\text{(1)} \quad C(m) = C(m - 1) + 1, \quad \text{For the 1p coin}$$
 
-$$\text{(2)} \quad O(m) = O(m - 3) + 1, \quad \text{For the 3p coin}$$
+$$\text{(2)} \quad C(m) = C(m - 3) + 1, \quad \text{For the 3p coin}$$
 
-$$\text{(3)} \quad O(m) = O(m - 4) + 1, \quad \text{For the 4p coin}$$
+$$\text{(3)} \quad C(m) = C(m - 4) + 1, \quad \text{For the 4p coin}$$
 
-One of these three cases will leave us with the smallest number. 
+One of these three cases will leave us with the smallest number.  Now, we can find the best solution to _any_ value, as long as we remember all the best solution for all the smaller values
+
+```
+input : 8
+3 cases,
+8 - 1 = 7. Best change for 7 is 3 coins (3,2)(1,1)
+8 - 3 = 5. Best change for 5 is 2 coins (4,1)(1,1)
+8 - 4 = 4. Best change for 4 is 1 coin  (4,1)
+=>
+Best change for 8 is 2 coins (4,1) + (4,1) -> (4,2)
+```
 
 
 
+## exit(0)
 
+This concept, named "dynamic programming", is one of the more elegant weapons in a programmer's armoury. I wanted to explore it in this blog post because the thinking behind it can be a powerful tool to attack problems we face in other arenas. 
 
-This concept, called "dynamic programming", isn't easy. To quote a friend of mine who works in software for an investment bank, 
-
-> "dynamic programming is super hard. [$$$ Bank] doesn't ask dynamic programming questions for interviews"
-
-
-
+1. Remember the best solutions to smaller problems
+2. Combine those solutions to solve bigger problem
