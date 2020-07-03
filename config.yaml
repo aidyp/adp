@@ -4,7 +4,7 @@ title: "adp"
 theme: "cupper-hugo-theme"
 
 params:
-  description: My first blog
+  description: exploring cyberspace, bit by bit
   footer: Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
   katex: true
 
