@@ -7,15 +7,18 @@ title: "internet explorer"
 ## to boldly go where many have gone before
 
 Diagrams of the internet usually look like this,
-// Diagram of A -> Cloud Thingy -> B
 
-This blog post is an exploration into the wiring of the internet. When we fetch information, where does it come from, and what path does it take to get to us?
+![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
-### UDP Discovery
+{need a better segue here}. This blog post is an exploration into the wiring of the internet. When we move information across the internet, what path does it take?
+
+### ICMP Discovery
 To explore the vast reaches of cyberspace, we're going to need an appropriate vessel. This section of the blog post will be about the packet used in `traceroute`. I want to inject some humour into it
 
 ### traceroute
 This subsection explains traceroute, and the Time To Live field, and what happens when it expires. 
+
+
 
 ### houston, we need a visual
 This subsection talks about how to view the the output of the traceroute command, and an explanation of the code written to explore the traceroute. (It is a project to write the code!)
