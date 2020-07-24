@@ -59,8 +59,7 @@ The next step is to construct an IP packet with `TTL=2`. This is forwarded to th
 
 ![Alt](/pictures/traceroute.png)
 
-This process repeats until we've made a packet with a `TTL` high enough that it reaches the destination before being dropped. 
-
+This process repeats until we've made a packet with a `TTL` high enough that it reaches the destination before being dropped. There's a neat piece of software that can do all of this, called `traceroute`. It's this that we'll use to light up the logical path that packets take between point A and point B.
 
 
 ### houston, we need a visual
@@ -79,7 +78,9 @@ I've never been to New Zealand, and I've always wanted to go. Corona has put a s
 The New Zealand (government?) website seems a good start. 
 // website & IP here
 
-traceroute output
+### traceroute
+
+First step is to run the `traceroute` program. Now we have a logical map of the path between us and New Zealand
 ```
 $ traceroute www.govt.nz
 /* the first few IP addresses are redacted,
@@ -99,9 +100,19 @@ I don't want you to know where I am! */
 
 ```
 
+The final part of each line is the time taken for the error message to return to my computer, or **latency**. Between,
 
+`10  ae-4.r24.londen12.uk.bb.gin.ntt.net (129.250.4.125)  16.257 ms` 
 
-Geo-tagged IPs. Letters correspond to the order they came in
+and,
+
+`11  ae-7.r21.sngpsi07.sg.bb.gin.ntt.net (129.250.7.65)  202.559 ms`
+
+there is a big jump in latency. It's likely that this is the hop where our packet left the UK and headed out across the globe
+
+### pinning the IP
+
+By running each IP from our `traceroute` output against a geo-ip service, we can get the longitude and latitude for each IP. To make it easier to pin to the map later, I've re-indexed the IPs by letter.
 
 ```
 A | 31.55.187.188   | (51.5074, -0.127758)
@@ -121,14 +132,24 @@ L | 103.28.250.187  | (-33.8591, 151.2002)
 
 
 
-then geographical screenshots go here
+Then we can overlay this data on Google Maps,
 
 ![Alt](/pictures/ldn_nzl_big.png "Bit of a trek if I'm honest")
 
 
 
-Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. Additionally, the geographical enrichment data isn't perfectly accurate. 
+Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. Additionally, the geographical enrichment data isn't perfect. 
 
+### bouncing around britain
+
+![Alt](/pictures/ldn_bzl_brt.png "First stop, High Wycombe?")
+
+Something here
+
+
+### transatlanticism
+
+Our humble packets traverse oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
 
 ## Where is stuff
