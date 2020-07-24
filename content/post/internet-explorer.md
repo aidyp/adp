@@ -23,7 +23,7 @@ A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be 
 ### building a cyber space ship
 To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. Every packet on the internet looks a bit like this,
 
-// picture of IP packet
+![Alt](/pictures/ip_packet.png)
 
 The headers contain those labels mentioned earlier, such as the destination address for that particular packet. We'll dig into the headers further, and examine their structure. An IP header looks like this,
 
@@ -57,7 +57,7 @@ We begin by constructing an IP packet with `TTL=1`. This is forwarded to the fir
 
 The next step is to construct an IP packet with `TTL=2`. This is forwarded to the first router, R1. When it reaches R1 the TTL will be decremented by one, leaving `TTL=1`. The packet will then be forwarded to the second router, R2. When it reaches R2 the TTL will be decremented by one again, so `TTL=0`. The packet is dropped, an error message is returned, and we now have the IP address of the second router.
 
-// Diagram goes here
+![Alt](/pictures/traceroute.png)
 
 This process repeats until we've made a packet with a `TTL` high enough that it reaches the destination before being dropped. 
 
