@@ -1,5 +1,5 @@
 ---
-date: "2014-09-28"
+ date: "2014-09-28"
 tags: ["networks", "exploration"]
 title: "internet explorer"
 ---
@@ -66,7 +66,7 @@ This process repeats until we've made a packet with a `TTL` high enough that it 
 ### houston, we need a visual
 `traceroute` is a great tool to discover the *logical* nature of the path taken, but it doesn't give us much insight into the *physical* path. We want to know where in the world the packet has gone. Luckily, IP addresses are (sort of) tied to geography. When public IP addresses are registered, they're registered to a particular place. With a little code, we can tie together the location of an IP address and overlay it on google maps. For example, `www.example.com` (which has an IP address of `93.184.216.34`) is located here,
 
-// Google maps of geo location of 93.184.216.34
+![Alt](/pictures/example_com_map.png)
 
 ## Warp speed
 
@@ -84,6 +84,7 @@ traceroute output
 $ traceroute www.govt.nz
 /* the first few IP addresses are redacted,
 I don't want you to know where I am! */
+ 5  31.55.187.180 (31.55.187.180)  15.513 ms  16.553 ms  17.264 ms
  6  core1-hu0-6-0-6.southbank.ukcore.bt.net (213.121.192.72)  17.960 ms 
  7  peer7-et-3-0-2.telehouse.ukcore.bt.net (109.159.252.180)  10.041 ms  
  8  166-49-128-32.gia.bt.net (166.49.128.32)  16.323 ms
@@ -100,13 +101,35 @@ I don't want you to know where I am! */
 
 
 
+Geo-tagged IPs. Letters correspond to the order they came in
+
+```
+A | 31.55.187.188   | (51.5074, -0.127758)
+B | 213.121.192.112 | (51.6143, -0.7944)
+C | 62.172.103.166  | (54.4, -7.5833)
+D | 166.49.128.32   | (51.5074, -0.127758)
+E | 212.119.4.136   | (51.5061, -0.071338)
+F | 129.250.4.125   | (51.5074, -0.127758)
+G | 129.250.7.65    | (1.35208, 103.82)
+H | 129.250.3.74    | (1.35208, 103.82)
+I | 129.250.7.67    | (22.3119, 114.257)
+J | 129.250.6.92    | (22.3119, 114.257)
+K | 192.80.16.50    | (38.5816, -121.494)
+L | 103.28.250.187  | (-33.8591, 151.2002)
+
+```
+
 
 
 then geographical screenshots go here
 
+![Alt](/pictures/ldn_nzl_big.png "Bit of a trek if I'm honest")
 
 
-// analysis of the geographies goes here
+
+Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. Additionally, the geographical enrichment data isn't perfectly accurate. 
+
+
 
 ## Where is stuff
 
