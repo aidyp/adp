@@ -1,5 +1,5 @@
 ---
- date: "2014-09-28"
+date: "2014-09-28"
 tags: ["networks", "exploration"]
 title: "internet explorer"
 ---
