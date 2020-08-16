@@ -6,13 +6,18 @@ title: "mapping music"
 
 ## mapping music
 {{< spotify "7G6oI8xoGa62LGvE2xjtfP">}}
-During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways to listen to music.
+
+During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways to listen to music. This blog is a dive into one of those ways.
 
 ### oh man you're gonna *love* this next track 
 
-[core points]
+At parties, when we used to have parties, I remember finding myself listening to a song and immediately thinking about what song I wanted to listen to next. The second track hadn't been on my mind before the first track played; it came to me only upon hearing that first one.
 
-At parties, when we used to have parties, I remember finding myself listening to a track someone had put on and immediately knowing what song I wanted to put on next. 
+This, to me, defines a connection between two songs. It reminds me of the word association game, where one person says a word and you say the first related word that comes to your mind. The same is true of songs. This naturally leads to the question, "How do *I* connect songs together?".
+
+Let's find out.
+
+------
 
 #### theory (better title needed)
 
@@ -48,16 +53,20 @@ How does this differ from a playlist? In a playlist, when you hit shuffle, the s
 
 ![Alt](/pictures/mesh_graph.png "all together, right now")
 
-The theory now dispatched with, all we need is a way to 
+The theory now cemented, we need now to work out a way to:
 
 1. Build this graph of songs
 2. Play it
+
+To do the first we need a large, easy-to-search database of songs. To do the second, we need a tool that can play songs from that database. Spotify provides both.
+
+------
 
 ###  spotify
 
 The people behind Spotify are saints. They've exposed an API (**A**pplication **P**rogramming **I**nterface) so that professionals and amateurs alike can write code to extend on their product. Usage of this API, as long as you don't go nuts, is completely free.
 
-Through this API, we can leverage (*read*: abuse) a whole suite of Spotify features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc.  Spotify gives every song a unique identifier. That's what we'll store. The second is the playback feature. We can play any song on Spotify by referencing its unique identifier. With a list of unique identifiers that we searched for earlier, we can play them back in any order we choose.
+Through this API, we can leverage (*read*: abuse) a whole suite of Spotify features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc. Spotify gives every song a unique identifier, which is part of the information that's returned by a search. That's what we'll store. The second is the playback feature. We can play any song on Spotify by referencing its unique identifier. With a list of unique identifiers that we searched for earlier, we can play them back in any order we choose.
 
 {{< expandable label="Application Programming Interfaces" >}}
 
@@ -79,9 +88,9 @@ With a little computer code, you can write software that lets you quickly search
 
 
 
-
-
 ### building the graph
+
+{{< spotify "0pQskrTITgmCMyr85tb9qq">}}
 
 Need a way to store the graph, is that really relevant? Just explain that it's a table. Not v complicated.
 
@@ -117,6 +126,10 @@ After a few nights running the program, this is what the graph looks like.
 
 Now that I look at it a bit more, it looks more like constellations.
 
+------
+
+
+
 ### exploring the graph
 {{< spotify "6Qb7gtV6Q4MnUjSbkFcopl">}}
 
@@ -136,8 +149,10 @@ In this case, the 'depth' approach makes the most sense. One song ought naturall
 
 
 
-
+------
 
 
 ### onwards and upwards
 {{< spotify "5R96PHcqOGjgj23D98F6mf">}}
+
+There remains a lot unformed in this idea
