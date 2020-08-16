@@ -6,7 +6,7 @@ title: "mapping music"
 
 ## mapping music
 {{< spotify "7G6oI8xoGa62LGvE2xjtfP">}}
-During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways I listen to music.
+During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways to listen to music.
 
 ### oh man you're gonna *love* this next track 
 
@@ -42,13 +42,11 @@ I argue that, for our relation, it shouldn't be transitive. I might want to list
 
 We can use this relation to link different songs together. Here's what it might look like, 
 
-// Drawing of graph of bangers
+![Alt](/pictures/banger_graph.png "when i touch that track it turns into gold")
 
 How does this differ from a playlist? In a playlist, when you hit shuffle, the songs are arranged in a random order. With respect to our relation, it means that any song might follow any other. So a playlist, as a song graph, looks like,
 
-// Drawing of full mesh graph
-
-
+![Alt](/pictures/mesh_graph.png "all together, right now")
 
 The theory now dispatched with, all we need is a way to 
 
@@ -59,19 +57,27 @@ The theory now dispatched with, all we need is a way to
 
 The people behind Spotify are saints. They've exposed an API (**A**pplication **P**rogramming **I**nterface) so that professionals and amateurs alike can write code to extend on their product. Usage of this API, as long as you don't go nuts, is completely free.
 
+Through this API, we can leverage (*read*: abuse) a whole suite of Spotify features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc.  Spotify gives every song a unique identifier. That's what we'll store. The second is the playback feature. We can play any song on Spotify by referencing its unique identifier. With a list of unique identifiers that we searched for earlier, we can play them back in any order we choose.
+
 {{< expandable label="Application Programming Interfaces" >}}
 
-Any large computer program is a collection of smaller programs and systems working in harmony to solve problems. Application Programming Interfaces are one of mechanisms use to glue these different parts together. 
+Any large computer program is a collection of smaller programs and systems working in harmony to solve problems. Application Programming Interfaces are one of mechanisms use to glue these different parts together.
 
-Levers and (what's the word for when something comes out of chutes). 
+Spotify presents a **R**E**ST**ful (**R**epresential **S**tate **T**ransfer) API. The terminology is a little opaque, but the intuition isn't so tricky. The idea is analogous to a vending machine. You provide the vending machine with a code and, if the code is valid, the vending machine provides you back with the drink corresponding to that code. We use the digit code as an interface between ourselves and the vending machine. That interface was designed by the vending machine manufacturer to make it easy to get the drink you want.
 
+![Alt](/pictures/vending_machine.png "thirsty work")
 
+Spotify's API is similar. The developers have designed an interface that allows computer programs to easily get the data they want. If we want to search a song, we enter a specific search code. Then, if the code is valid, Spotify provides you back with the results of your search. In Spotify's case, this result is the unique identifier for the song. 
+
+![Alt](/pictures/spotify_vending_machine.png "hello from the other side")
+
+With a little computer code, you can write software that lets you quickly search Spotify's music database and do with the results whatever you please. If you'd like to know more about APIs, there really is no better introduction than [Tom Scott's video on the subject](https://www.youtube.com/watch?v=BxV14h0kFs0)
 
 {{< /expandable >}}
 
-Through this API, we can leverage (*read*: abuse) a whole suite of Spotify features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc. 
+------
 
-Spotify gives every song and a unique identifier. That's what we'll store, and use later to play back.
+
 
 
 
@@ -114,10 +120,24 @@ Now that I look at it a bit more, it looks more like constellations.
 ### exploring the graph
 {{< spotify "6Qb7gtV6Q4MnUjSbkFcopl">}}
 
-Now that I have
+Now that the song graph is constructed, how best to play it back?
+
+We have to start somewhere. In fact, we can start anywhere. So it's best to pick randomly. 
+
+// Diagram of song graph with one coloured in
+
+There are two classic ways to explore a graph. Go wide, or go long. Specifically,
+
+// Diagram of song graph with the 'wide' version and also the 'deep' version.
+
+In this case, the 'depth' approach makes the most sense. One song ought naturally follow another. We want to follow one line to its end, rather than start many different lines all at once. 
+
+// Should I include code for a depth-first search? 
+
 
 
 
 
 
 ### onwards and upwards
+{{< spotify "5R96PHcqOGjgj23D98F6mf">}}

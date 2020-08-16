@@ -8,8 +8,6 @@ title: "counting change"
 
 ## hello world
 
-
-
 When I first began my formal study of computer science at high school, my teacher asked me to write a program that would dispense change from a self-service machine. 
 
 The rules were simple. My machine would only have 10p, 5p, 2p, and 1p coins. When it was time to dispense change, my program would take as input the amount in pennies and dispense the minimum number of coins required to make the correct change. For the sake of pedagogy, my teacher told us that we would never run out of coins.
