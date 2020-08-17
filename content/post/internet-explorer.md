@@ -25,7 +25,7 @@ To explore these vast reaches of cyberspace, we're going to need an appropriate 
 
 ![Alt](/pictures/ip_packet.png)
 
-The headers contain those labels mentioned earlier, such as the destination address for that particular packet. We'll dig into the headers further, and examine their structure. An IP header looks like this,
+The headers contain those labels mentioned earlier, such as the destination address for that particular packet. We'll dig into the headers further, and examine their structure. An IP header is constructed like so,
 
 ```
  0                   1                   2                   3  
@@ -45,9 +45,9 @@ The headers contain those labels mentioned earlier, such as the destination addr
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-We're most interested in the **TTL** (**T**ime **T**o **L**ive) field. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The TTL value for a packet determines how many hops a packets can make. Each router the packet passes through reduces this value by one. When the TTL reaches zero, the packet is dropped and its journey comes to an end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`. 
+We're most interested in the **TTL** (**T**ime **T**o **L**ive) section. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existant) packet. That message, bundled in an IP packet, includes the IP address of the router.
 
-It's this property that we will leverage to explore the internet.
+It's this property that we will leverage to map the internet.
 
 ### traceroute
 
@@ -61,28 +61,38 @@ The next step is to construct an IP packet with `TTL=2`. This is forwarded to th
 
 This process repeats until we've made a packet with a `TTL` high enough that it reaches the destination before being dropped. There's a neat piece of software that can do all of this, called `traceroute`. It's this that we'll use to light up the logical path that packets take between point A and point B.
 
+Sample `traceroute` output looks like this,
+```
+picard@voyager: traceroute 93.184.216.34
+/* prior hops */
+7  62.6.201.145 (62.6.201.145)  16.680 ms  14.572 ms  14.565 ms
+/* later hops */
+```
+The first number, `7` is the index of the hop. In this case, it's the 7th router along the path. `(62.6.201.145)` is the address of that router. `16.860ms 15.572ms 14.565ms` are the total times taken between sending the packet from the source machine, and receiving the error message from the router. The internet is sometimes unreliable, so `traceroute` sends multiple packets for accuracy.
+
 
 ### houston, we need a visual
+
 `traceroute` is a great tool to discover the *logical* nature of the path taken, but it doesn't give us much insight into the *physical* path. We want to know where in the world the packet has gone. Luckily, IP addresses are (sort of) tied to geography. When public IP addresses are registered, they're registered to a particular place. With a little code, we can tie together the location of an IP address and overlay it on google maps. For example, `www.example.com` (which has an IP address of `93.184.216.34`) is located here,
 
 ![Alt](/pictures/example_com_map.png)
 
 ## Warp speed
 
-Now that we have mission control set up,  we can do some exploring.
+With mission control set up, we can set Time To Liftoff to `0` and blast off.
 
 ### mission: new zealand
 
 I've never been to New Zealand, and I've always wanted to go. Corona has put a stop to regular travel, but not to our regular programming. Let's go!
 
-The New Zealand (government?) website seems a good start. 
+The New Zealand government website seems a good destination.
 // website & IP here
 
 ### traceroute
 
 First step is to run the `traceroute` program. Now we have a logical map of the path between us and New Zealand
 ```
-$ traceroute www.govt.nz
+picard@voyager: traceroute www.govt.nz
 /* the first few IP addresses are redacted,
 I don't want you to know where I am! */
  5  31.55.187.180 (31.55.187.180)  15.513 ms  16.553 ms  17.264 ms
@@ -100,7 +110,7 @@ I don't want you to know where I am! */
 
 ```
 
-The final part of each line is the time taken for the error message to return to my computer, or **latency**. Between,
+The final part of each line, the time taken for the error message to return to my computer, is formally referred to as **latency**. Between,
 
 `10  ae-4.r24.londen12.uk.bb.gin.ntt.net (129.250.4.125)  16.257 ms` 
 
@@ -152,7 +162,11 @@ Something here
 Our humble packets traverse oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
 
-## Where is stuff
+## one small hop for data, one giant leap for information
+
+I read once that human progress tends to compress the space and time between people. I think the internet is part of that; the cables that connect it are the threads that knit the modern world together.  Zooming out to look at the whole, it's extraordinary how well the world is connected.
+
+
 
 Joe mentioned a really good point about AWS. Now that there are so many things based on the cloud, there is a clustering of all the services. I don't have any comment about whether or not this is a good or a bad thing, I just think it's interesting.
 

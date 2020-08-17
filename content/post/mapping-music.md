@@ -35,7 +35,7 @@ Now that we have defined this relationship we can use some mathematics to examin
 
 A relation (let's call it `r`) is symmetric if `A r B` implies that `B r A`. In our case, if you want to listen to song `B` after listening to `A` , does it follow that you'd be happy to listen to `A` after `B`?
 
-In my opinion, yes. The link between the two songs can be travelled in either direction.
+In my opinion, yes. The link between the two songs can be traversed in either direction.
 
 **transitivity**
 
@@ -53,7 +53,7 @@ How does this differ from a playlist? In a playlist, when you hit shuffle, the s
 
 ![Alt](/pictures/mesh_graph.png "all together, right now")
 
-The theory now cemented, we need now to work out a way to:
+The theory now cemented, we need now to work out how to:
 
 1. Build this graph of songs
 2. Play it
@@ -64,9 +64,9 @@ To do the first we need a large, easy-to-search database of songs. To do the sec
 
 ###  spotify
 
-The people behind Spotify are saints. They've exposed an API (**A**pplication **P**rogramming **I**nterface) so that professionals and amateurs alike can write code to extend on their product. Usage of this API, as long as you don't go nuts, is completely free.
+The people behind Spotify are saints. They've exposed an **API** (**A**pplication **P**rogramming **I**nterface) so that professionals and amateurs alike can write code to extend on their product. Usage of this API, as long as you don't go nuts, is completely free.
 
-Through this API, we can leverage (*read*: abuse) a whole suite of Spotify features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc. Spotify gives every song a unique identifier, which is part of the information that's returned by a search. That's what we'll store. The second is the playback feature. We can play any song on Spotify by referencing its unique identifier. With a list of unique identifiers that we searched for earlier, we can play them back in any order we choose.
+Through this API, we can leverage (*read*: abuse) a whole suite of Spotify's features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc. Spotify gives every song a unique identifier, which is part of the information that's returned by a search. That's what we'll store. The second is the playback feature. We can play any song on Spotify by referencing its unique identifier. With a list of unique identifiers that we searched for earlier, we can play them back in any order we choose.
 
 {{< expandable label="Application Programming Interfaces" >}}
 
@@ -92,39 +92,35 @@ With a little computer code, you can write software that lets you quickly search
 
 {{< spotify "0pQskrTITgmCMyr85tb9qq">}}
 
-Need a way to store the graph, is that really relevant? Just explain that it's a table. Not v complicated.
+We need a way to build the graph. We could do it by hand; We write down all the songs we can think of and then draw lines between them. This is tedious, and boring. The art of programming is mostly the art of laziness, and this sounds like far too much effort.
 
-Core principle was, "I want to listen to this song next". While listening to a song, if you queue up another one, add it to the graph.
+A better way is to leverage the principle from which this idea sprung. Listen to a song as normal, and then queue up whichever song appeals next. By keeping track of the song currently playing, and the one that's just been queued up, a link can be formed automatically. That way, we can build the graph just by listening to music. Easy, and fun.
 
-
+![Alt](/pictures/listen_along.png)
 
 This poses an immediate problem. What if, while listening to a song, you queue up multiple songs to listen to after. How do they fit into the graph? Suppose we queue up 3 seperate songs, `B`, `C`, `D`. Clearly they should all be related to the first song, `A`.
 
-```
-A --> B
-A --> C
-A --> D
-```
+![Alt](/pictures/listen_along_multiple.png)
+
 What of the relations between `B, C, D`? Personally, I reasoned that they ought all be connected to each other. That is,
-```
-A --> B
-A --> C
-A --> D
--- AND --
-B --> C
-B --> D
-C --> D
-```
 
- 
+![Alt](/pictures/listen_along_multiple_meshed.png)
 
+If you're comfortable listen to `B` and `C` after `A`, it follows that you're comfortable listening to `C` after `B`. Track `A` put you in a state of mind that lead you to `B` and `C`. I argue that `B` will probably put you in the state of mind that leads you to `C`, and vice versa.
 
+Then we can listen along, adding songs as we see fit. As we listen, the graph will naturally start to fill out, the connections aligning to which tracks were queued relative to which tracks were being played at the time.
 
-After a few nights running the program, this is what the graph looks like.
+![Alt](/pictures/listen_along_fleshing_out.png)
 
-// Picture of the final result.
+I wrote some code to implement this idea, and then borrowed some graph visualisation software online to see what the results would look like. After a few nights of listening, my final song graph had grown to be pretty big!
 
-Now that I look at it a bit more, it looks more like constellations.
+![Alt](/pictures/song_constellation.png "ground control to major song")
+
+Now that I look at it, it is less like a graph and more like constellations. Here's a closer look at one such constellation, with track labels preserved.
+
+// Graph of a zoomed in version with the labels attached.
+
+Now that the graph exists, the next task is to determine the natural way to play it back.
 
 ------
 
