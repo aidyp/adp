@@ -83,6 +83,8 @@ This subsection talks about how many passwords we can reasonably be expected to 
 
 ### cracking passwords
 
+When defending, it pays to understand the attacker.
+
 This section (may be moved) explores how password hashes are cracked. Will use some examples from (https://www.tunnelsup.com/getting-started-cracking-password-hashes/)
 
 The idea is to show that it's not that hard to crack passwords, anyone can do it, and perhaps a little exploration as to _how_ passwords are cracked. The theme is to talk about how our password rules can be manipulated
