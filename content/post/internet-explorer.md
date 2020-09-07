@@ -85,8 +85,7 @@ With mission control set up, we can set Time To Liftoff to `0` and blast off.
 
 I've never been to New Zealand, and I've always wanted to go. Corona has put a stop to regular travel, but not to our regular programming. Let's go!
 
-The New Zealand government website seems a good destination.
-// website & IP here
+The New Zealand government website seems a good destination. Their website, `www.govt.nz`, is found at `103.28.251.187`.
 
 ### traceroute
 

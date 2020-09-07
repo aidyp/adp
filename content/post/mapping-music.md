@@ -7,7 +7,7 @@ title: "mapping music"
 ## mapping music
 {{< spotify "7G6oI8xoGa62LGvE2xjtfP">}}
 
-During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways to listen to music. This blog is a dive into one of those ways.
+During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways to listen to music. 
 
 ### oh man you're gonna *love* this next track 
 
