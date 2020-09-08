@@ -37,36 +37,6 @@ input : 31
 
 I coded this algorithm up, e-mailed it to my teacher, and continued on to the next problem. 
 
-{{< expandable label="Code Snippet #1" level="2" >}}
-Code snippets in this blog post are written in the Python programming language. It's not necessary to have a background in programming to understand the ideas in this blog, but these tabs will include code snippets for those curious.
-
-```python
-def drop_coin(n):
-	# Dummy function, emulates machine dropping a coin
-
-def make_change(amount):
-	count = 0
-	while amount >= 0:
-		if amount - 10 >= 0:
-			# Drop a 10p coin
-			drop_coin(10)
-			amount = amount - 10
-		elif amount - 5 >= 0:
-			# Drop a 5p coin
-			drop_coin(5)
-			amount = amount - 5
-        elif amount - 1 >= 0:
-        	# Drop a 1p coint
-        	drop_coin(1)
-        	amount = amount - 1
-		count = count + 1
-		
-```
-
-{{< /expandable >}}
-
-
-
 ------
 
 
@@ -120,39 +90,9 @@ input : 45
 45 | 6, ... [6  more], 1, 1, 1 (using 1 & 3 & 4)
 ```
 
-It gets to the right answer, but there's so much needless work. This method tries lots of different options before settling on the best one. 
+It gets to the right answer, but there's so much needless work. This method tries lots of different options before settling on the best one. It's greedy, but inefficient.
 
-I tried to think about a more efficient way to compute all these possibilities, but I was out of time. The class was moving on. The next topic was Dijkstra's Algorithm, finding the shortest path from A to B. Dijkstra made sure to avoid any distractions, so I decided to do the same.
-
-
-
-{{< expandable label="Code Snippet #2" level="2" >}}
-Code for the naive brute force algorithm
-
-```python
-def drop_coin(n):
-	# Dummy function, emulates machine dropping a coin
-
-def make_change(amount):
-	count = 0
-	while amount >= 0:
-		if amount - 10 >= 0:
-			# Drop a 10p coin
-			drop_coin(10)
-			amount = amount - 10
-		elif amount - 5 >= 0:
-			# Drop a 5p coin
-			drop_coin(5)
-			amount = amount - 5
-        elif amount - 1 >= 0:
-        	# Drop a 1p coint
-        	drop_coin(1)
-        	amount = amount - 1
-		count = count + 1
-		
-```
-
-{{< /expandable >}}
+I tried to think about a more efficient way to compute all these possibilities, but I was out of time. The class was moving on. The next topic was Dijkstra's Algorithm, which is concerned with finding the shortest path from A to B. Dijkstra made sure to avoid any distractions, so I decided to do the same.
 
 ------
 
@@ -301,34 +241,6 @@ input : 10
 Best change for 10 is 3 coins (3,2) + (4,1) 
 ...
 ```
-
-{{< expandable label="Code Snippet #3" level="2" >}}
-Code for the dynamic programming solution. To Do!
-
-```python
-def drop_coin(n):
-	# Dummy function, emulates machine dropping a coin
-
-def make_change(amount):
-	count = 0
-	while amount >= 0:
-		if amount - 10 >= 0:
-			# Drop a 10p coin
-			drop_coin(10)
-			amount = amount - 10
-		elif amount - 5 >= 0:
-			# Drop a 5p coin
-			drop_coin(5)
-			amount = amount - 5
-        elif amount - 1 >= 0:
-        	# Drop a 1p coint
-        	drop_coin(1)
-        	amount = amount - 1
-		count = count + 1
-		
-```
-
-{{< /expandable >}}
 
 ------
 

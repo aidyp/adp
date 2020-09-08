@@ -2,9 +2,20 @@
 date: "2014-09-28"
 tags: ["hugo", "theme", "command-line"]
 title: "p4ssw0rd$"
+toc: false
+---
+
+
+
+There's a lot of password advice out there. Some if it is good, and some of it is really bad. This post is a quick dive into passwords; there's theory, practice, and even a bit of hacking. By the end you'll be able to give out your own, high quality, password advice.
+
+
+
 ---
 
 ## password_theory_123
+
+
 
 ### password space
 
@@ -22,17 +33,17 @@ From these two dimensions we can determine how large the space of possible passw
 
 ### password strength
 
-This idea of password _space_ gives us a way to think about password _strength_. If there are many possible options for a password, it follows that said password is stronger. 
+This idea of password _space_ gives us a way to think about password _strength_. If there are many possible options for a password, it follows that said password is stronger.
 
 This produces an important question. In order to maximise password strength, which dimension should we focus on? Is length or depth more important?
 
-Length. 
+Length. By miles.
 
 // Graphs go here.
 
 *Caveat*
 
-This distinction between length and depth is not always so clear cut. Take xkcd's excellent comic on the subject,
+This distinction between length and depth is not always so clear cut. Take xkcd's excellent comic on passwords,
 
 How best to evaluate the strength of this password? `correcthorsebatterystaple` is 25 symbols long, from a symbol set of 26 letters. This is pretty strong. A computer would have a hard time guessing this. Using our equation, we get
 
@@ -50,34 +61,129 @@ which is still a large number, but much less large than the above.
 
 ### he chose... randomly
 
-The xkcd example illustrates a devastating weakness in password strength. The manner in which a password is constructed is more important 
+The xkcd example illustrates a devastating weakness in password strength. The manner in which a password is constructed is more important.
 
-## password.practice!
+Introduce the concept of entropy, informally
+
+
+
+### the best passwords ever
+
+All the above confirms the strongest password: a long sequence of numbers and letters chosen at complete random. This password may be hard to remember, but it is the strongest. It's strong because it's _hard to guess_. Unfortunately, a password that you can't remember is not a very useful password. We need a way to make the password _easy to remember_. This maxim, _hard to guess, easy to remember_, is the foundation of how we think about passwords. 
+
+[Gosh this is hard to write, it's all over the place]
+
+---
+
+## p4ssw0rd_pr4ct1ce
 
 Your secrets are only as safe as the secret keepers. Before we can evaluate how best to manage passwords, we have to examine how your passwords are kept secret. 
 
-Most of our passwords have only two secret keepers, us and the website to which our password permits us access. We'll talk about how you and I should manage our passwords a little later. First, we're going to explore how websites store passwords.
+Most of our passwords have only two secret keepers, us and the website or application to which our password permits us access. We'll talk about how you and I should manage our passwords a little later. First, we're going to explore how those website and applications store our passwords.
+
+### a big list
+
+In order to divide up a website's material for different users, there must be a list of those users corresponding with which bit of the website they are allowed to access.
+```
+== User List ==
+user   | account type
+...
+calvin | admin
+hobbes | user
+```
+
+Clearly, only `calvin` should be allowed to access the `admin` part of the website. The website needs to make sure that someone claiming to be `calvin` really is him. To do this, there must be a secret shared only by `calvin` and the website. This secret, that permits him to pass, is our password.
+
+```
+== User List - Top Secret! ==
+user   | account type | password
+...
+calvin |    admin     | schoolsux
+hobbes |    user      | ilovetuna
+```
+
+Every time a user logs on to the website, they present their username and password. The website then checks the password against this list of passwords. If it's correct, access granted. If not, try again. 
+
+Immediately, a problem arises. Anyone with access to the password list can pretend to be any user. This password list must be protected. Disaster would strike if it fell into the wrong hands. You could encrypt the password list, but you'd still need to have the encryption key somewhere. This is a little harder for an attacker, as she now must steal two things, but it isn't a meaningful barrier. 
+
+The question is, how can these passwords be protected, even if this master list is stolen?
 
 ### make a hash of it
 
-(make a mention of hash vs cryptographic hash) A cryptographic hash function is like a digital sausage machine. You put the pig in one end, and you get sausages out the other. This process cannot be done in reverse. There is no machine to recover a pig from a sausage. Hash functions provide the same assurance.
+Consider a sausage machine. You put the pig in one end and you get sausages out the other. Crucially, this process cannot be done in reverse; there is no machine to recover a pig from a sausage. **Cryptographic hash functions** provide much the same assurance. You put the input, `x`, in one end and you get `y` out the other. Like the sausage machine, this process cannot be reversed.
 
 ```
-pig --> Magic Sausage Machine --> sausage
-x   -->     Hash Function     --> y
+pig -->   Sausage Machine   --> sausage
+x   -->    Hash Function    --> y
 
 One way only.
 ```
 
-They have a few other important properties. First, a hash function returns values of a fixed length. No matter how large the pig going into the magic sausage machine, only one sausage comes out. The same sized sausage, every time. 
+Hash functions possess a few additional important properties. First, a hash function returns values of a fixed length. Imagine if, no matter how large the pig fed into the sausage machine, only one sausage comes out. The same sized sausage, every time.  Second, a hash function promises that no two inputs will ever result in the same output. Take two different pigs, they will result in two radically sausages.[^1]
 
-Second, a hash function promises that no two inputs will ever result in the same output. Take two different pigs, they will result in two different sausages.
+[^1]: These two properties are contradictory. Because hash functions map an infinitely large space (the set of *variable* length input strings) to a finite space (the set of *fixed* length output strings), it follows that there will be inputs that map to the same output. This is formally called a **collision**. The hash functions used in the modern web are not perfectly collision free, it's just so hard to find a collision that they may as well be.
+
+This gives websites a safer way to store your passwords. Suppose your password was `password`, the website will now only store the hash of that, `H(password) = a3jX...Jxk`. Instead of the big list earlier, they instead store the hash of the password. 
+
+```
+== user accounts - TOP SECRET! == 
+calvin | xjaj...ded  (The hash of 'schoolsux')
+hobbes | 3jfj...ttb  (The hash of 'ilovetuna')
+```
+
+When a user wants access to the website, they present their password. The website hashes the password, and checks if the resultant hash matches the password list. If it does, the password is correct. If it doesn't, try again.
+
+The 
 
 ### programmers are human too
 
-The above is quite a dramatic simplification of the best practice to store passwords. Companies and organisations get it wrong, a lot. Big ones, too. In {date}, it was leaked that Apache were incorrectly storing their passwords. The details are a little technical, so I've hidden them away in the below tab
+The above is an over simplification of the best practice to store passwords. Making sure that passwords remain safe while still offering a smooth service to thousands of users is difficult. Companies and organisations get it wrong, a lot. Big ones, too. In {date}, it was leaked that Apache were incorrectly storing their passwords. The details are technical, I've hidden them away in the below tab, but the point remains; you cannot always rely on websites to keep your passwords safe.
+
+Security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. 
+
+But let's give websites and their designers the benefit of the doubt (you shouldn't) and assume they always use the latest and greatest in password protection (they don't). How safe are your passwords under this model?
+
+
 
 ### memory 
+
+It's clear that, in order to protect passwords, they mustn't be re-used. The solution then, is to have a unique password for every account. How many accounts is that?
+
+
+
+The average person on the internet has
+
+- 8.5 social media accounts
+- accounts for utilities, the council, etc
+- e-mail
+- subscriptions: netflix, spotify, wired, etc
+- online shopping
+
+We all have so many passwords. In the past few years there has been an effort to merge lots of different identities into one. You can now sign into some websites via facebook, effectively one password for two websites, but only facebook has to keep your password safe. However, even with this trend, we all still have too many passwords to remember.
+
+The average person remembers something like [However many passwords they can remember, I bet it's not much]. Clearly, there's no way to remember the number of distinct passwords we need. Even if those passwords are 'easy to remember' Most people reach for one of three resolutions
+
+- Come up with a 'password rule' that doesn't mean you have to remember different passwords
+- Write all the unique passwords down somewhere
+- ~~Use the same password more than once~~
+
+Let's review each in turn. 
+
+#### password rule
+
+It's tempting to come up with a set of rules that means you never have to remember a password. This might be something simple like `name of website + 123`, which will produce a set of unique passwords. It might be more complex like.
+
+Seems perfect. All you have to remember is the rule, and then every time you visit the website you can reconstruct your password on the fly. As long as the rule is sufficiently complex, there's no way an attacker could guess your rule.
+
+Maybe. There's no guarantee that your idea is unique. Your carefully crafted rule might be something an attacker has (1) already thought of or (2) encountered it before in another context. As we saw earlier, once attackers have discovered a rule, they can easily leverage it in an attack.
+
+#### write them down 
+
+Writing passwords down means that you never have to remember them. You can make them as strong as you like, without having to worry about remembering them. Problems are if it gets stolen (or more likely, lost), your secrets are vulnerable and you can't access your websites. 
+
+Could write them down on a computer, but if your computer breaks or you lose it, then you've lost all your passwords. Also you have to keep them safe, but that's what password managers do. They're a list of passwords protected by a single password that you remember.  Gotta make sure that it's accessible from different devices -- which means it has to be hosted somewhere (LastPass -- can be compromised)
+
+[Really starting to add up on the content here]
 
 This subsection talks about how many passwords we can reasonably be expected to remember with _different_ rules. We may have many different passwords, but it's likely we come up with one or two rules. From the theory perspective, it's clear how the strength of our rules can be used to predict passwords.
 
@@ -86,6 +192,8 @@ This subsection talks about how many passwords we can reasonably be expected to 
 When defending, it pays to understand the attacker.
 
 This section (may be moved) explores how password hashes are cracked. Will use some examples from (https://www.tunnelsup.com/getting-started-cracking-password-hashes/)
+
+
 
 The idea is to show that it's not that hard to crack passwords, anyone can do it, and perhaps a little exploration as to _how_ passwords are cracked. The theme is to talk about how our password rules can be manipulated
 
@@ -96,4 +204,4 @@ The blog post isn't there just to make people feel bad. The idea is to give some
 
 There is the idea of tiered passwords, having a few very secret ones for your really important services that you don't re-use. 
 
-The overall aim of the blog post isn't to shame people into good / bad password policies, it's just to share some intuitions that I find helpful when talking about passwords
+The overall aim of the blog post isn't to shame people into good / bad password policies, it's just to share some intuitions that I find helpful when talking about passwords.
