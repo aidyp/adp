@@ -4,14 +4,14 @@ tags: ["hugo", "theme", "command-line"]
 title: "dungeons, dragons, and decryption"
 ---
 
-### you find yourselves in a dark forest
 
-Some time ago, a friend of mine came to me with a peculiar problem. He is an avid D&D player, and his Dungeon Master at the time had decided to put some important information online. Unfortunately for my friend, it was encrypted. His DM had provided him with a program to decrypt the information, and told them they'd uncover the key inside the game.
 
-Naturally, my friend contacted me and asked that I help him break the code. This blog post is about how we broke it.
+Some time ago, a friend of mine came to me with a peculiar problem. He wanted me to break a code. He is an avid D&D player, and his Dungeon Master at the time had decided to put some important information online. Unfortunately for my friend, it was encrypted.
+
+This blog post is about how we broke the code.
 
 ---
-
+### you find yourselves in a dark forest
 
 
 **timeline**

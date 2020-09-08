@@ -2,9 +2,14 @@
 date: "2014-09-28"
 tags: ["hugo", "theme", "command-line"]
 title: "counting change"
+toc: false
 ---
 
+Introduction about this piece. Ultimately I wrote it because I was bored, which is not a great intro is it?
 
+
+
+---
 
 ## hello world
 
@@ -90,7 +95,7 @@ input : 45
 45 | 6, ... [6  more], 1, 1, 1 (using 1 & 3 & 4)
 ```
 
-It gets to the right answer, but there's so much needless work. This method tries lots of different options before settling on the best one. It's greedy, but inefficient.
+It gets to the right answer, but there's so much needless work. This method tries lots of different options before settling on the best one. It's inefficient.
 
 I tried to think about a more efficient way to compute all these possibilities, but I was out of time. The class was moving on. The next topic was Dijkstra's Algorithm, which is concerned with finding the shortest path from A to B. Dijkstra made sure to avoid any distractions, so I decided to do the same.
 
@@ -102,11 +107,11 @@ I tried to think about a more efficient way to compute all these possibilities, 
 
 #### back to school
 
-This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this. The change counting problem was a popular example. I coded up the naive solution, and submitted it. My program ran, and failed. It had taken too long. As the number to make change from increases, the number of possible coin combinations grows exponentially. I needed to take a step back.
+This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this. The change counting problem was a popular example. I coded up the naive solution, and submitted it. My program ran, and failed. It had taken too long. As the number to make change from increases, the number of possible coin combinations grows too large. I needed to take a step back.
 
-Recall the conditions that crashed our greedy algorithm, `coins = [1, 3, 4], input = 6`.  The correct answer is 2 coins, as 6 = 2 * 3. You didn't have to calculate this, you knew it. To be precise, you _remembered_ it. When you were younger, primary school maths teachers drilled times tables into your memory. They installed a lookup table into your brain, that you could call on whenever needed. 
+Recall the conditions that crashed our greedy algorithm, `coins = [1, 3, 4], input = 6`.  The correct answer is 2 coins, as 6 = 2 * 3. You didn't have to calculate this, you just knew it. To be precise, you _remembered_ it. When you were younger, primary school maths teachers drilled times tables into your memory. They installed a lookup table into your brain that you could call on whenever needed. 
 
-This lookup table is not very large. For most of us, it stops at 144 = 12*12. The human mind has far more interesting things to commit to memory than a table of numbers. Computers, on the other hand, do not. And they can remember a great deal. 
+This lookup table is not very large. For most of us, it stops at 144 = 12*12. The human mind has far more interesting things to commit to memory than a huge table of numbers. Computers, on the other hand, do not. And they can remember a great deal. 
 
 This idea, that it is faster to remember an answer than to calculate it, is a fundamental pillar in algorithmic thinking. We call it "time versus space complexity." When multiplying, is it better to make space to remember the answer, or take the time to calculate it?
 
