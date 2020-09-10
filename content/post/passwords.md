@@ -56,6 +56,8 @@ Length. By miles.
 
 This distinction between length and depth is not always so clear cut. Take xkcd's great comic on the subject,
 
+// Link to comic goes here
+
 How can we evaluate the strength of this password? `correcthorsebatterystaple` is 25 symbols long, from a symbol set of 26 letters. This is pretty strong. A computer would have a hard time guessing this. Using our equation, we get
 
 $$N = 26^{25}$$ 
@@ -66,15 +68,15 @@ But consider how the password is constructed. Four words are selected from a dic
 
 $$N = 50000^{4}$$
 
-which is still a large number, but much less large than the above. This is not to say the advice is bad. I just want to give it some context.
+which is still a large number, but much less large than the above. If the attacker knows you're using this rule to construct your passwords, they can use the same rule to guess what that password might be. This is not to say the advice is bad. I just want to give it some context.
 
-A good password is one that comes from a large password space. Too small, and an attacker will have no problem trying all possible passwords from that space to find the correct one. This inelegant response is called **brute forcing**.
+A good password is one that comes from a large password space. Too small, and an attacker will have no problem trying all possible passwords from that space to find the correct one. This inelegant method is called **brute forcing**.
 
  
 
 ### he chose... randomly
 
-Suppose that, instead of picking randomly from a dictionary of 50,000 words, I chose words based on what I could see on my desk. On my desk there is a,
+Suppose that when constructing my four random words from the dictionary, I chose words based on what I could see at the time, On my desk at the moment there is a,
 
 - keyboard
 - mouse
@@ -83,9 +85,9 @@ Suppose that, instead of picking randomly from a dictionary of 50,000 words, I c
 
 This only gives me a few passwords. 
 
-What's gone wrong? In theory I have the whole dictionary to choose from, but in practice I end up only choosing combinations of four words. An attacker doesn't have to try every possible combination of words because she can safely predict that I'll only have used four words. This notion of 'prediction' is important in the study of passwords, and information theory more generally. It's called **entropy**. Entropy describes how uncertain the outcome of an event is. In this case, the attacker is certain that the password will be a combination of `[keyboard, mouse, lamp, plant]`. This makes it trivial for her to crack.
+What's gone wrong? In theory I have the whole dictionary to choose from, but in practice I end up choosing the same few words every time. An attacker doesn't have to try every possible combination of words because she can safely predict that I'll only have used four words. This notion of 'prediction' is important in the study of passwords, and information theory more generally. It's called **entropy**. Entropy describes how uncertain the outcome of an event is. If I picked randomly from the dictionary, an attacker would have trouble predicting which words would be in the password. The resultant password would therefore have high entropy. If I just picked words based on what I could see, the attacker can be certain that the password will be a combination of `[keyboard, mouse, lamp, plant]`. This makes it trivial for her to crack, because the password has low entropy.
 
-Entropy is the second pillar of password strength. A password that has high entropy -- bits of the password can't easily be predicted -- are much harder to crack than those with low entropy. 
+Predicting the nature of passwords is a common approach for attackers. They know that people use 0 for O, or 1 for i. People may choose their favourite football team or their child's name in the password. All of these things are leveraged by an attacker to reduce the number of guesses they need to crack the password. A low entropy password allows the attacker to narrow the space of possible passwords.  Entropy, therefore, is the second pillar of password strength. A password that has high entropy is much harder to crack than one with low entropy. 
 
 
 
@@ -118,7 +120,7 @@ calvin | admin
 hobbes | user
 ```
 
-Clearly, only `calvin` should be allowed to access the `admin` part of the website. The website needs to make sure that someone claiming to be `calvin` really is him. To do this, there must be a secret shared only by `calvin` and the website. This secret, that permits him to pass, is our password.
+Clearly, only `calvin` should be allowed to access the `admin` part of the website. The website needs to make sure that someone claiming to be `calvin` really is him. To do this, there must be a secret shared only by `calvin` and the website. This secret, that permits him to pass, is a password.
 
 ```
 == User List - Top Secret! ==
@@ -136,7 +138,7 @@ The question is, how can these passwords be protected, even if (when) this maste
 
 ### make a hash of it
 
-Consider a sausage machine. You put the pig in one end and you get sausages out the other. Crucially, this process cannot be done in reverse; there is no machine to recover a pig from a sausage. **Cryptographic hash functions** provide much the same assurance. You put the input, `x`, in one end and you get `y` out the other. Like the sausage machine, this process cannot be reversed.
+Consider a sausage machine. You put the pig in one end, some stuff happens, and you get sausages out the other. This process cannot be done in reverse; there is no machine to recover a pig from a sausage. **Cryptographic hash functions** provide much the same assurance. You put the input, `x`, in one end and you get `y` out the other. Like the sausage machine, this process cannot be reversed.
 
 ```
 pig -->   Sausage Machine   --> sausage
@@ -171,7 +173,7 @@ But let's give websites and their designers the benefit of the doubt (we shouldn
 
 ### cracking passwords
 
-Password cracking is a popular field in computer science because (1) it can make you a lot of money and (2) it's really interesting. 
+Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. 
 
 This section (may be moved) explores how password hashes are cracked. Will use some examples from (https://www.tunnelsup.com/getting-started-cracking-password-hashes/), john the ripper, hashcat etc. Just give the reader an idea of what the benchmarks are.
 

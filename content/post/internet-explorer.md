@@ -2,19 +2,28 @@
 date: "2014-09-28"
 tags: ["networks", "exploration"]
 title: "internet explorer"
+toc: false
+---
+
+This blog post is an exploration into the wiring of the internet. When we move information across the internet, what does its path look like? 
+
 ---
 
 ## to boldly go where many have gone before
 
-This blog post is an exploration into the wiring of the internet. When we move information across the internet, what does its path look like? 
-
 ### addressing the internet
 
-The internet looks a bit like this,
+When I was fifteen I had (or I thought I had) this very witty desktop background,
+
+![Alt](/pictures/google_bit.jpg)
+
+Now, years later, I have a better background and a better understanding of the internet. It turns out that the internet is not so different from the postal system. They two ideas, at a high level, analogous. When you send a letter to someone else, you first wrap it an envelope. On that envelope you write the address. You take it the post box, where it is then forwarded to the local mail sorting station. If the address is near by to the mail centre, they will deliver it. If not, it is moved to another mail centre from where it can be delivered. 
+
+The internet is a collection of devices connected to each other. 
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
-A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. When we want to send a message between two points on the internet, the message is first divided up into packets. These packets are then labelled with the destination address, the source address, and other useful information. The labelled packets are then sent to the nearest routing station, called a router. This router examines the label on the packet, and forwards it on to either another router or the destination itself.
+A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. When we want to send a message between two points on the internet, the message is first divided up into **packets**. These packets are then labelled with the destination address, the source address, and other useful information. The labelled packets are then sent to the nearest routing station, called a router. This router examines the label on the packet, and forwards it on to either another router or the destination itself. 
 
 
 
@@ -45,9 +54,9 @@ The headers contain those labels mentioned earlier, such as the destination addr
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-We're most interested in the **TTL** (**T**ime **T**o **L**ive) section. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existant) packet. That message, bundled in an IP packet, includes the IP address of the router.
+We're most interested in the **TTL** (**T**ime **T**o **L**ive) section. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
 
-It's this property that we will leverage to map the internet.
+It's this property that we will leverage to map the internet. Rinse, and repeat.
 
 ### traceroute
 
@@ -73,9 +82,18 @@ The first number, `7` is the index of the hop. In this case, it's the 7th router
 
 ### houston, we need a visual
 
-`traceroute` is a great tool to discover the *logical* nature of the path taken, but it doesn't give us much insight into the *physical* path. We want to know where in the world the packet has gone. Luckily, IP addresses are (sort of) tied to geography. When public IP addresses are registered, they're registered to a particular place. With a little code, we can tie together the location of an IP address and overlay it on google maps. For example, `www.example.com` (which has an IP address of `93.184.216.34`) is located here,
+`traceroute` is a great tool to discover the *logical* nature of the path taken, but it doesn't give us much insight into the *physical* path. We want to know where in the world the packet has gone. Luckily, IP addresses are (sort of) tied to geography. When public IP addresses are registered, they're registered to a particular place. With a little code, we can tie together the geographical location of an IP address and plot it on google maps. For example, `www.example.com` (which has an IP address of `93.184.216.34`) is located here,
 
 ![Alt](/pictures/example_com_map.png)
+
+{{< expandable label="Domain Name System" level="3" >}}
+Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address often describes a physical machine. 
+
+To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phonebook. Your computer looks up the name of the website you want to visit and gets back its IP address. That's the IP address used for all the packets sent to the website.  When you connect to a website through a browser, your computer handles this process automatically.
+
+
+{{< /expandable >}}
+
 
 ## Warp speed
 
@@ -83,7 +101,7 @@ With mission control set up, we can set Time To Liftoff to `0` and blast off.
 
 ### mission: new zealand
 
-I've never been to New Zealand, and I've always wanted to go. Corona has put a stop to regular travel, but not to our regular programming. Let's go!
+I've never been to New Zealand, and I've always wanted to go. Corona has put a stop to regular travel, but not to our regular programming. Let's go.
 
 The New Zealand government website seems a good destination. Their website, `www.govt.nz`, is found at `103.28.251.187`.
 
@@ -109,7 +127,7 @@ I don't want you to know where I am! */
 
 ```
 
-The final part of each line, the time taken for the error message to return to my computer, is formally referred to as **latency**. Between,
+The final part of each line is the time taken between my computer sending the `traceroute` packet and the corresponding error message to return. This is called the **latency**. Between,
 
 `10  ae-4.r24.londen12.uk.bb.gin.ntt.net (129.250.4.125)  16.257 ms` 
 
@@ -117,7 +135,7 @@ and,
 
 `11  ae-7.r21.sngpsi07.sg.bb.gin.ntt.net (129.250.7.65)  202.559 ms`
 
-there is a big jump in latency. It's likely that this is the hop where our packet left the UK and headed out across the globe
+there is a big jump in latency.This is the hop where our packet left the UK and headed out across the globe
 
 ### pinning the IP
 
@@ -143,11 +161,11 @@ L | 103.28.250.187  | (-33.8591, 151.2002)
 
 Then we can overlay this data on Google Maps,
 
-![Alt](/pictures/ldn_nzl_big.png "Bit of a trek if I'm honest")
+![Alt](/pictures/ldn_nzl_big.png "Bit of a trek)
 
 
 
-Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. Additionally, the geographical enrichment data isn't perfect. 
+Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. As a result, two different routers may be pinned to the same latitude and longitude.
 
 ### bouncing around britain
 
@@ -158,14 +176,14 @@ Something here
 
 ### transatlanticism
 
-Our humble packets traverse oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
+Our tiny packets traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
 
 ## one small hop for data, one giant leap for information
 
-I read once that human progress tends to compress the space and time between people. I think the internet is part of that; the cables that connect it are the threads that knit the modern world together.  Zooming out to look at the whole, it's extraordinary how well the world is connected.
+I read once that human progress tends to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that knit the modern world together.  Zooming out to look at the whole, it's extraordinary how well the world is connected.
 
-
+Today's internet aims to shorten the distance between you and the content you want even more. Take `netflix.com`. It's an American company, so to visit the website
 
 Joe mentioned a really good point about AWS. Now that there are so many things based on the cloud, there is a clustering of all the services. I don't have any comment about whether or not this is a good or a bad thing, I just think it's interesting.
 
