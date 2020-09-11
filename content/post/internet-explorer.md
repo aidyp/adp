@@ -17,24 +17,22 @@ When I was fifteen I had (or I thought I had) this very witty desktop background
 
 ![Alt](/pictures/google_bit.jpg)
 
-Now, years later, I have a better background and a better understanding of the internet. It turns out that the internet is not so different from the postal system. They two ideas, at a high level, analogous. When you send a letter to someone else, you first wrap it an envelope. On that envelope you write the address. You take it the post box, where it is then forwarded to the local mail sorting station. If the address is near by to the mail centre, they will deliver it. If not, it is moved to another mail centre from where it can be delivered. 
-
-The internet is a collection of devices connected to each other. 
+Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mailroom. If the address is near by to the mailroom, they will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mailrooms all intertwined, the internet is a collection of machines connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
-A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. When we want to send a message between two points on the internet, the message is first divided up into **packets**. These packets are then labelled with the destination address, the source address, and other useful information. The labelled packets are then sent to the nearest routing station, called a router. This router examines the label on the packet, and forwards it on to either another router or the destination itself. 
+A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. [some more explanation on IP addresses here, maybe extend the analogue from the postal system]
+
+When we want to send a message between two points on the internet, the message is first divided up into **packets**. These packets are then labelled with the destination address, the source address, and other useful information. The labelled packets are then sent to the nearest routing station, called a router. This router examines the label on the packet, and forwards it on to either another router or, if the destination address is nearby, the destination itself. 
 
 
-
-{need a better segue here}. 
 
 ### building a cyber space ship
-To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. Every packet on the internet looks a bit like this,
+To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. The packets I meant earlier look like this.
 
 ![Alt](/pictures/ip_packet.png)
 
-The headers contain those labels mentioned earlier, such as the destination address for that particular packet. We'll dig into the headers further, and examine their structure. An IP header is constructed like so,
+The data part is for the content of the message. The header contains those labels mentioned earlier, such as the destination address. Much like the address on the envelope on the letter, it is the headers that routers examine to move traffic through the internet. We'll dig into the headers further, and examine their structure. IP headers follow a strict format -- computers do not handle ambiguity well -- that looks like this,
 
 ```
  0                   1                   2                   3  
@@ -53,10 +51,11 @@ The headers contain those labels mentioned earlier, such as the destination addr
 |                    Options                    |    Padding    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
+The headers contain all the information the router needs to shift the packet along. The `Destination Address`describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now. Our focus will be on `Source Address`, `Destination Address`, and `Time to Live`.
 
 We're most interested in the **TTL** (**T**ime **T**o **L**ive) section. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
 
-It's this property that we will leverage to map the internet. Rinse, and repeat.
+It's this property that we will leverage to map out paths along the internet.
 
 ### traceroute
 
@@ -70,7 +69,7 @@ The next step is to construct an IP packet with `TTL=2`. This is forwarded to th
 
 This process repeats until we've made a packet with a `TTL` high enough that it reaches the destination before being dropped. There's a neat piece of software that can do all of this, called `traceroute`. It's this that we'll use to light up the logical path that packets take between point A and point B.
 
-Sample `traceroute` output looks like this,
+An example `traceroute` output looks like this,
 ```
 picard@voyager: traceroute 93.184.216.34
 /* prior hops */
@@ -85,6 +84,8 @@ The first number, `7` is the index of the hop. In this case, it's the 7th router
 `traceroute` is a great tool to discover the *logical* nature of the path taken, but it doesn't give us much insight into the *physical* path. We want to know where in the world the packet has gone. Luckily, IP addresses are (sort of) tied to geography. When public IP addresses are registered, they're registered to a particular place. With a little code, we can tie together the geographical location of an IP address and plot it on google maps. For example, `www.example.com` (which has an IP address of `93.184.216.34`) is located here,
 
 ![Alt](/pictures/example_com_map.png)
+
+If we take the IP address from each router obtained by `traceroute` and plot its geographical location on a map, we can visualise the physical path that the packets take between two locations on the internet.
 
 {{< expandable label="Domain Name System" level="3" >}}
 Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address often describes a physical machine. 
