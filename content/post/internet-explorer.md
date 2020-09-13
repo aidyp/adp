@@ -1,5 +1,5 @@
 ---
-date: "2014-09-28"
+date: "2020-06-14"
 tags: ["networks", "exploration"]
 title: "internet explorer"
 toc: false
@@ -17,7 +17,7 @@ When I was fifteen I had (or I thought I had) this very witty desktop background
 
 ![Alt](/pictures/google_bit.jpg)
 
-Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mailroom. If the address is near by to the mailroom, they will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mailrooms all intertwined, the internet is a collection of machines connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
+Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mailroom. If the address is near by to the mailroom, they will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mailrooms all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
@@ -28,7 +28,7 @@ When we want to send a message between two points on the internet, the message i
 
 
 ### building a cyber space ship
-To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. The packets I meant earlier look like this.
+To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. The packets I introduced earlier look like this.
 
 ![Alt](/pictures/ip_packet.png)
 
@@ -90,8 +90,7 @@ If we take the IP address from each router obtained by `traceroute` and plot its
 {{< expandable label="Domain Name System" level="3" >}}
 Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address often describes a physical machine. 
 
-To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phonebook. Your computer looks up the name of the website you want to visit and gets back its IP address. That's the IP address used for all the packets sent to the website.  When you connect to a website through a browser, your computer handles this process automatically.
-
+To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phonebook. Your computer looks up the name of the website you want to visit and gets back its IP address. That's the IP address used for all the packets sent to the website.  Your browser handles this process automatically when you make a connection to a website. 
 
 {{< /expandable >}}
 
@@ -102,13 +101,13 @@ With mission control set up, we can set Time To Liftoff to `0` and blast off.
 
 ### mission: new zealand
 
-I've never been to New Zealand, and I've always wanted to go. Corona has put a stop to regular travel, but not to our regular programming. Let's go.
+I've never been to New Zealand and I've always wanted to go. Covid-19 has put a stop to regular travel, but not to our regular programming. Let's go!
 
 The New Zealand government website seems a good destination. Their website, `www.govt.nz`, is found at `103.28.251.187`.
 
-### traceroute
+### mapping it out
 
-First step is to run the `traceroute` program. Now we have a logical map of the path between us and New Zealand
+First step is to run the `traceroute` program. This will give us the logical path between us and New Zealand
 ```
 picard@voyager: traceroute www.govt.nz
 /* the first few IP addresses are redacted,
@@ -136,11 +135,11 @@ and,
 
 `11  ae-7.r21.sngpsi07.sg.bb.gin.ntt.net (129.250.7.65)  202.559 ms`
 
-there is a big jump in latency.This is the hop where our packet left the UK and headed out across the globe
+there is a big jump in latency.This is the hop where our packet left the UK and headed out across the globe. 
 
 ### pinning the IP
 
-By running each IP from our `traceroute` output against a geo-ip service, we can get the longitude and latitude for each IP. To make it easier to pin to the map later, I've re-indexed the IPs by letter.
+By running each IP from our `traceroute` output against a geolocation service, we get the longitude and latitude for each IP. To make it easier to pin to the map later, I've re-indexed the IPs by letter.
 
 ```
 A | 31.55.187.188   | (51.5074, -0.127758)
@@ -158,12 +157,9 @@ L | 103.28.250.187  | (-33.8591, 151.2002)
 
 ```
 
+Then we overlay this data on Google Maps to get the physical path.
 
-
-Then we can overlay this data on Google Maps,
-
-![Alt](/pictures/ldn_nzl_big.png "Bit of a trek)
-
+![Alt](/pictures/ldn_nzl_big.png "Bit of a trek")
 
 
 Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. As a result, two different routers may be pinned to the same latitude and longitude.
@@ -179,14 +175,18 @@ Something here
 
 Our tiny packets traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
+### mission debrief
+
+Something to round up the "mission", as it were.
+
+
 
 ## one small hop for data, one giant leap for information
 
-I read once that human progress tends to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that knit the modern world together.  Zooming out to look at the whole, it's extraordinary how well the world is connected.
+The total time it took for the packet to go to New Zealand and back was 236 milliseconds. For context, the average human reaction time is 215 milliseconds. It takes approximately the same time for information to cross the globe as it does for you to react to it. This is _fast_. But it can get faster. Today's internet aims to reduce the time you have to wait for the content you want. Why should I have to travel all the way to New Zealand just to view a website? 
 
-Today's internet aims to shorten the distance between you and the content you want even more. Take `netflix.com`. It's an American company, so to visit the website
+They can meet me in the middle. Digital information can be copied almost instantaneously. A website that was created in New Zealand can be copied and replicated on a server closer to home. This principle of replicating data closer to the consumer is called **caching**. Take `netflix.com`. It's an American company, so in theory I have to send data to America to get movies. In practice, `netflix.com` has servers in the UK that have copies of all the content. If I want to watch a movie, it will be downloaded from a server much closer to my computer. Netflix did something like this when it was a DVD rental company. They'd have depots from which they could distribute physical disks. In the digital world, it's much easier to clone information. Services like Netflix can proliferate around the globe with ease.
 
-Joe mentioned a really good point about AWS. Now that there are so many things based on the cloud, there is a clustering of all the services. I don't have any comment about whether or not this is a good or a bad thing, I just think it's interesting.
+I read once that human progress tends to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that knit the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet. [link to starlink / space satellite?]
 
-Maybe something to do w/ netflix, where it's hosted, etc. Can talk about caching & other features (to the best of my knowledge, may be wrong)
 

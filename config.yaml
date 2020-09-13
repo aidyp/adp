@@ -3,6 +3,9 @@ languageCode: "en-us"
 title: "adp"
 theme: "cupper-hugo-theme"
 
+taxonomies:
+  tag: tags
+
 params:
   footer: Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
   katex: true
@@ -16,6 +19,12 @@ menu:
     - name: Blog
       url: /post/
       weight: 2
+    - name: Tags
+      url: /tags/
+      weight: 3
+    - name: More
+      url: /more/
+      weight: 4
 
 markup:
   defaultMarkdownHandler: goldmark

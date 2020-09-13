@@ -2,7 +2,7 @@
 
 ![Alt](/pictures/calvin_and_hobbes.jpg "with love to Bill Waterson")
 
-This blog is aims to explore computers in an intuitive way. It asks questions of our machines and presents their answers plainly.
+This blog aims to explore computers in an intuitive way. Each post asks a question of our machines and tries to present the answer plainly.
 
 There are also some jokes. 
 
