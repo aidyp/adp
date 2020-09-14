@@ -17,13 +17,21 @@ When I was fifteen I had (or I thought I had) this very witty desktop background
 
 ![Alt](/pictures/google_bit.jpg)
 
-Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mailrooms all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
+Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mail centres all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
-A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. [some more explanation on IP addresses here, maybe extend the analogue from the postal system]
+A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. It's most analogous to a postcode. Each address is sequence of numbers that identify exactly where on the internet a particular machine lies. All IP addresses follow a strict format. They are a series of four numbers, separated by dots. Each number is between 0 and 255.
 
-When we want to send a message between two points on the internet, the message is first divided up into **packets**. These packets are then labelled with the destination address, the source address, and other useful information. The labelled packets are then sent to the nearest routing station, called a router. This router examines the label on the packet, and forwards it on to either another router or, if the destination address is nearby, the destination itself. 
+```
+IP Format:
+[0-255].[0-255].[0-255].[0-255]
+
+Sample IP:
+192.168.1.254
+```
+
+When we want to send a message between two points on the internet, the message is first divided up into **packets**. These packets are then labelled with the destination IP address, the senders IP address, and other useful information. The labelled packets are then sent to the nearest routing station, called a router. This router examines the label on the packet, and forwards it on to either another router or, if the destination address is nearby, the destination itself. 
 
 
 
@@ -51,7 +59,7 @@ The data part is for the content of the message. The header contains those label
 |                    Options                    |    Padding    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
-The numbers on the top describe the size in bits of each header. The first four bits of an IP header are always the `Version`. The next four bits is always the `IHL`, which stands for **I**nternet **H**eader **L**ength. It describes how big the header is going to be. Just as you can have envelopes of different sizes, IP headers can be differently sized depending on which `Options` are present. The next eight bits is for the `Type of Service`, and so on and so forth.
+The numbers on the top describe the size, in bits, of each header. The first four bits of an IP header are always the `Version`. The next four bits is always the `IHL`, which stands for **I**nternet **H**eader **L**ength. It describes how big the header is going to be. Just as you can have envelopes of different sizes, IP headers can be differently sized depending on which `Options` are present. The next eight bits is for the `Type of Service`, and so on and so forth.
 
 The headers contain all the information the router needs to shift the packet along. The `Destination Address` describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now. Our focus will be on `Source Address`, `Destination Address`, and `Time to Live`.
 
@@ -95,6 +103,8 @@ Locations on the internet are described by their IP address, but that's not how 
 To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phone book. Your computer looks up the name of the website you want to visit in this phone book and gets back its IP address. That's the IP address used for all the packets sent to the website.  Your browser handles this process automatically when you make a connection to a website. You'll only ever notice this when it goes wrong. 
 
 {{< /expandable >}}
+
+---
 
 
 ## warp speed
@@ -170,7 +180,21 @@ Some of the letters are a bit jumbled up on google maps. Hop `D` and hop `F` hav
 
 ![Alt](/pictures/ldn_bzl_brt.png "First stop, High Wycombe?")
 
-My internet service provider is BT, who divide their infrastructure up into 'code' nodes and 'metro' nodes. 
+My internet service provider is BT, who divide their infrastructure up into 'code' nodes and 'metro' nodes. The core nodes are where the serious equipment is. If you imagine the internet like the road network, the links between the core nodes are akin to motorways. The locations of the core nodes are public knowledge. Here's a map,
+
+![Alt](https://kitz.co.uk/adsl/images/21CN_core_map_location.png "All routes lead to London")
+
+Our traffic goes through the core node at the South Bank, London (`core1-hu0-6-0-6.southbank.ukcore.bt.net`). From a core node, traffic can be routed anywhere within BT's network. If we wanted to visit south Wales, the next stop would be the core node in Cardiff.
+
+But we want to go international. To do so, we need to pass our packets over to another internet service provider. There's no one company or organisation that manages all of the internet. They each manage a small part of it. When data needs to move between them, its handed it over at dedicated peering points. These peering nodes manage the transfer of the packet from BT's network to someone else's. 
+
+{{< expandable level=3 label="peering contests" >}} 
+
+Peering can be a tense subject. Both sides of the arrangement have to agree to the peering connection. When each side is sending and receiving a roughly equal amount of data (and making an equal amount of money for it!), the relationship remains stable. However, sometimes one network owner will decide that the other isn't a fair partner. They might demand a higher fee for carrying traffic, or a share of the profits.
+
+Some of these disputes have been legendary, like in 2010 when two internet service providers [went to war](https://gigaom.com/2010/12/01/comcast-level-3-battle/) with each other. These sort of disputes usually don't lead to any major disruption in service, although there can be cases where different zones in the internet can no longer reach other.
+
+{{</ expandable >}}
 
 
 ### transatlanticism
@@ -191,6 +215,6 @@ They can meet me in the middle. Digital information can be copied almost instant
 
 I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet.
 
-![Alt](https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg)
+![Alt](https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg "The starlink satellite array")
 
 
