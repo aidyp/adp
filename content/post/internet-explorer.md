@@ -17,7 +17,7 @@ When I was fifteen I had (or I thought I had) this very witty desktop background
 
 ![Alt](/pictures/google_bit.jpg)
 
-Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mailroom. If the address is near by to the mailroom, they will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mailrooms all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
+Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mailrooms all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
@@ -32,7 +32,7 @@ To explore these vast reaches of cyberspace, we're going to need an appropriate 
 
 ![Alt](/pictures/ip_packet.png)
 
-The data part is for the content of the message. The header contains those labels mentioned earlier, such as the destination address. Much like the address on the envelope on the letter, it is the headers that routers examine to move traffic through the internet. We'll dig into the headers further, and examine their structure. IP headers follow a strict format -- computers do not handle ambiguity well -- that looks like this,
+The data part is for the content of the message. The header contains those labels mentioned earlier, such as the destination address. Much like the address on the envelope of a letter, it is the headers that routers examine to move traffic through the internet. We'll dig into the headers further, and examine their structure. IP headers follow a strict format -- computers do not handle ambiguity well -- that looks like this,
 
 ```
  0                   1                   2                   3  
@@ -51,9 +51,11 @@ The data part is for the content of the message. The header contains those label
 |                    Options                    |    Padding    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
-The headers contain all the information the router needs to shift the packet along. The `Destination Address`describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now. Our focus will be on `Source Address`, `Destination Address`, and `Time to Live`.
+The numbers on the top describe the size in bits of each header. The first four bits of an IP header are always the `Version`. The next four bits is always the `IHL`, which stands for **I**nternet **H**eader **L**ength. It describes how big the header is going to be. Just as you can have envelopes of different sizes, IP headers can be differently sized depending on which `Options` are present. The next eight bits is for the `Type of Service`, and so on and so forth.
 
-We're most interested in the **TTL** (**T**ime **T**o **L**ive) section. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
+The headers contain all the information the router needs to shift the packet along. The `Destination Address` describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now. Our focus will be on `Source Address`, `Destination Address`, and `Time to Live`.
+
+We're most interested in the **TTL** (**T**ime **T**o **L**ive) field. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
 
 It's this property that we will leverage to map out paths along the internet.
 
@@ -88,14 +90,14 @@ The first number, `7` is the index of the hop. In this case, it's the 7th router
 If we take the IP address from each router obtained by `traceroute` and plot its geographical location on a map, we can visualise the physical path that the packets take between two locations on the internet.
 
 {{< expandable label="Domain Name System" level="3" >}}
-Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address often describes a physical machine. 
+Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address only describes a machine on the internet. [need to explain this a bit better]
 
-To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phonebook. Your computer looks up the name of the website you want to visit and gets back its IP address. That's the IP address used for all the packets sent to the website.  Your browser handles this process automatically when you make a connection to a website. 
+To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phone book. Your computer looks up the name of the website you want to visit in this phone book and gets back its IP address. That's the IP address used for all the packets sent to the website.  Your browser handles this process automatically when you make a connection to a website. You'll only ever notice this when it goes wrong. 
 
 {{< /expandable >}}
 
 
-## arp speed
+## warp speed
 
 With mission control set up, we can set Time To Liftoff to `0` and blast off.
 
@@ -187,6 +189,8 @@ The total time it took for the packet to go to New Zealand and back was 236 mill
 
 They can meet me in the middle. Digital information can be copied almost instantaneously. A website that was created in New Zealand can be copied and replicated on a server closer to home. This principle of replicating data closer to the consumer is called **caching**. Take `netflix.com`. It's an American company, so in theory I have to send data to America to get movies. In practice, `netflix.com` has servers in the UK that have copies of all the content. If I want to watch a movie, it will be downloaded from a server much closer to my computer. Netflix did something like this when it was a DVD rental company. They'd have depots from which they could distribute physical disks. In the digital world, it's much easier to clone information. Services like Netflix can proliferate around the globe with ease.
 
-I read once that human progress tends to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that knit the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet. [link to starlink / space satellite?]
+I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet. [link to starlink / space satellite?]
+
+![Alt](https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg)
 
 
