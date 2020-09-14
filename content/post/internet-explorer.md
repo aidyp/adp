@@ -95,17 +95,17 @@ To solve this problem, early pioneers of the internet invented **DNS** (**D**oma
 {{< /expandable >}}
 
 
-## Warp speed
+## arp speed
 
 With mission control set up, we can set Time To Liftoff to `0` and blast off.
 
 ### mission: new zealand
 
-I've never been to New Zealand and I've always wanted to go. Covid-19 has put a stop to regular travel, but not to our regular programming. Let's go!
+I've never been to New Zealand and I've always wanted to go. Covid-19 has put a stop to travel, but not to our regular programming. Let's go!
 
 The New Zealand government website seems a good destination. Their website, `www.govt.nz`, is found at `103.28.251.187`.
 
-### mapping it out
+### plotting the route
 
 First step is to run the `traceroute` program. This will give us the logical path between us and New Zealand
 ```
@@ -135,11 +135,11 @@ and,
 
 `11  ae-7.r21.sngpsi07.sg.bb.gin.ntt.net (129.250.7.65)  202.559 ms`
 
-there is a big jump in latency.This is the hop where our packet left the UK and headed out across the globe. 
+there is a big jump in latency. Hop `11` is when the packet left the UK and travelled across the globe.
 
 ### pinning the IP
 
-By running each IP from our `traceroute` output against a geolocation service, we get the longitude and latitude for each IP. To make it easier to pin to the map later, I've re-indexed the IPs by letter.
+By running each IP from our `traceroute` output against a geo-location service, we get the longitude and latitude for each IP. To make it easier to pin to the map later, I've re-indexed the IPs by letter.
 
 ```
 A | 31.55.187.188   | (51.5074, -0.127758)
@@ -162,7 +162,7 @@ Then we overlay this data on Google Maps to get the physical path.
 ![Alt](/pictures/ldn_nzl_big.png "Bit of a trek")
 
 
-Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. As a result, two different routers may be pinned to the same latitude and longitude.
+Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. 
 
 ### bouncing around britain
 
@@ -175,9 +175,9 @@ Something here
 
 Our tiny packets traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
-### mission debrief
+### coming full circle
 
-Something to round up the "mission", as it were.
+`traceroute` can only tell us the path packets take on the way to the destination. It can't determine which route the packets take to return to us. Routing on the internet is complicated and dynamic; different days will yield different routes. Perhaps `www.govt.nz`  sent the reply back the same way, or it may have decided on a different route. There are routers along on the west coast of the US. From there, packets would have travelled across the states to the east coast. Then they'd have boarded a transatlantic cable to the UK. After bouncing around London for a little while, the packets would have eventually reached my laptop.
 
 
 

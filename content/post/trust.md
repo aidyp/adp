@@ -15,13 +15,13 @@ Or suppose you receive a letter in the post. It's a bill from your gas company, 
 
 What if you work at a bank, and someone comes in with a cheque that they claim was given to them by a third party. How do you know that really party really signed the cheque?
 
-These problems are all present in the digital world too, with one notable exception. In the physical world, we can make things hard to copy. IDs can be made with watermarks so they're not easy to clone. Written signatures are hard to forge. In the digital world, anything can be copied, effortlessly and often without alerting the copier.
+These problems are all present in the digital world too, with one notable exception. In the physical world, we can make things hard to copy. IDs can be made with watermarks so they're not easy to clone. Written signatures are hard to forge. In the digital world, anything can be copied, effortlessly and often without alerting anyone.
 
 ## encrypted != trusted
 
-We're often told that our connection is secure because it is encrypted. This is partly true. Encryption is a necessary condition for a safe connection. But encryption doesn't speak to the trustworthiness of a connection.
+We're often told that our connection is secure because it is encrypted. This is partly true. Encryption is a necessary condition for a safe connection. But encryption alone doesn't speak to the trustworthiness of a connection.
 
-Imagine you had a pen-pal on the other side of the world, and both of you were particularly paranoid. For whatever reason, you worried that people might read your messages, or even change the content of the message. You use special tamper-proof envelopes. You can be assured that whatever you send to your pen pal could not be read by anyone else. One day you receive a letter claiming to be from your pen-pal.
+Imagine you had a pen-pal on the other side of the world, and both of you were particularly paranoid. For whatever reason, you worried that people might read your messages, or even change the content of the message. You use special tamper-proof envelopes. You can be assured that whatever you send to your pen pal could not be read by anyone else. One day you receive a letter claiming to be from your pen-pal. 
 
 But how do you know? Anyone could put a letter in a tamper-proof envelope and send it to you. The envelope is intact, so nobody tampered with it on its journey. But that the mechanism used to transmit the message is safe from tampering is not proof that the message itself is trustworthy. 
 
@@ -29,7 +29,21 @@ It's this trust property that the green padlock is also trying to solve. To enfo
 
 ## introduction to (some) cryptography
 
-On the internet, trust is enforced by leveraging some lesser known cryptographic functions.
+On the internet, trust is enforced by leveraging some cryptographic functions. The green padlock makes use of **digital signatures**.
+
+An analogue signature has two parts. There's the signature, which is public. Then there's the way you sign it, which is private. In theory just because you can see the signature scrawled on a piece of paper, doesn't mean that you can replicate it. Knowing the public part, the signature, doesn't give you knowledge of the private part - the signing.
+
+The digital version operates on the same idea. There are two separate keys, a **public key** and a **private key**. 
+
+{{< expandable level=3 label="mathematics of digital signatures" >}}
+
+There are different mathematics used to achieve the necessary properties for digital signatures. We'll dig into a simplified version of **RSA**. 
+
+
+
+At school, the number line goes left and right to either end of infinity. 
+
+{{< /expandable >}}
 
 ### symmetric key encryption
 
