@@ -164,18 +164,18 @@ Then we overlay this data on Google Maps to get the physical path.
 ![Alt](/pictures/ldn_nzl_big.png "Bit of a trek")
 
 
-Some of the letters are a bit jumbled up on google maps. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network. 
+Some of the letters are a bit jumbled up on google maps. Hop `D` and hop `F` have the same co-ordinates. This is because some of the hops on the journey are in different logical parts of the network, but the same physical part of the network.
 
 ### bouncing around britain
 
 ![Alt](/pictures/ldn_bzl_brt.png "First stop, High Wycombe?")
 
-Something here
+My internet service provider is BT, who divide their infrastructure up into 'code' nodes and 'metro' nodes. 
 
 
 ### transatlanticism
 
-Our tiny packets traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
+Once our tiny packets reach a peering node,  they traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
 ### coming full circle
 
@@ -189,7 +189,7 @@ The total time it took for the packet to go to New Zealand and back was 236 mill
 
 They can meet me in the middle. Digital information can be copied almost instantaneously. A website that was created in New Zealand can be copied and replicated on a server closer to home. This principle of replicating data closer to the consumer is called **caching**. Take `netflix.com`. It's an American company, so in theory I have to send data to America to get movies. In practice, `netflix.com` has servers in the UK that have copies of all the content. If I want to watch a movie, it will be downloaded from a server much closer to my computer. Netflix did something like this when it was a DVD rental company. They'd have depots from which they could distribute physical disks. In the digital world, it's much easier to clone information. Services like Netflix can proliferate around the globe with ease.
 
-I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet. [link to starlink / space satellite?]
+I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet.
 
 ![Alt](https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg)
 
