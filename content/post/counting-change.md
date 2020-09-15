@@ -260,11 +260,3 @@ This concept, named "dynamic programming", is one of the more elegant weapons in
 
 The change-making problem is just one application of this idea. Within computer science, there are many more applications. But I think that this idea has applications to other fields. To me, computer science is the discipline of layering ideas on top of each other. Dynamic programming is a wonderful manifestation of this process, so I decided to write a blog about it. 
 
-
-
-### post script
-
-Something about Nick White
-
-Something about wikipedia
-
