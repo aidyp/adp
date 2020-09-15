@@ -171,13 +171,13 @@ If all this is done correctly (along with a few other tricks, but that's out of 
 
 The above is an over simplification of the best practice to store passwords. Making sure that passwords remain safe while still offering a smooth service to thousands of users is difficult. Companies and organisations get it wrong, a lot. Big ones, too. In {date}, it was leaked that Apache were incorrectly storing their passwords. The details are technical, I've hidden them away in the below tab, but the point remains; you cannot always rely on websites to keep your passwords safe. 
 
-Security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. There are security weaknesses all the time. Even in the areas we
+Security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. There are security weaknesses all the time. Even in the areas we would expect, like rate limiting the number of guesses. 
 
-But let's give websites and their designers the benefit of the doubt (we shouldn't) and assume they always use the latest and greatest in password protection (they don't). How safe are your passwords under this assumption?
+But let's give websites and their designers the benefit of the doubt (we shouldn't) and assume they always use the latest and greatest in password protection (they don't). How safe are your passwords when hashed like this?
 
 ### cracking passwords
 
-Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. The basics are as follows: you get a hashed list of passw
+Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. The basics are as follows: someone steals a list of hashed passwords, and tries to guess them on their computer
 // TO DO
 
 This section (may be moved) explores how password hashes are cracked. Will use some examples from (https://www.tunnelsup.com/getting-started-cracking-password-hashes/), john the ripper, hashcat etc. Just give the reader an idea of what the benchmarks are.
