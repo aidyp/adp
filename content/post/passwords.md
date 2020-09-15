@@ -1,5 +1,5 @@
 ---
-date: "2014-09-28"
+date: "2020-09-02"
 tags: ["hugo", "theme", "command-line"]
 title: "p4ssw0rd$"
 toc: false
@@ -52,13 +52,13 @@ Length. By miles.
 
 // Graphs go here.
 
-*Caveat*
+### sideways thinking
 
-This distinction between length and depth is not always so clear cut. Take xkcd's great comic on the subject,
+This distinction between length and depth is not always so clear cut. Take xkcd's great comic on passwords,
 
 // Link to comic goes here
 
-How can we evaluate the strength of this password? `correcthorsebatterystaple` is 25 symbols long, from a symbol set of 26 letters. This is pretty strong. A computer would have a hard time guessing this. Using our equation, we get
+How can we evaluate the space of this password under our model? `correcthorsebatterystaple` is 25 symbols long, from a symbol set of 26 letters. This is pretty strong. A computer would have a hard time guessing this. Using our equation, we get
 
 $$N = 26^{25}$$ 
 
@@ -87,7 +87,7 @@ This only gives me a few passwords.
 
 What's gone wrong? In theory I have the whole dictionary to choose from, but in practice I end up choosing the same few words every time. An attacker doesn't have to try every possible combination of words because she can safely predict that I'll only have used four words. This notion of 'prediction' is important in the study of passwords, and information theory more generally. It's called **entropy**. Entropy describes how uncertain the outcome of an event is. If I picked randomly from the dictionary, an attacker would have trouble predicting which words would be in the password. The resultant password would therefore have high entropy. If I just picked words based on what I could see, the attacker can be certain that the password will be a combination of `[keyboard, mouse, lamp, plant]`. This makes it trivial for her to crack, because the password has low entropy.
 
-Predicting the nature of passwords is a common approach for attackers. They know that people use 0 for O, or 1 for i. People may choose their favourite football team or their child's name in the password. All of these things are leveraged by an attacker to reduce the number of guesses they need to crack the password. A low entropy password allows the attacker to narrow the space of possible passwords.  Entropy, therefore, is the second pillar of password strength. A password that has high entropy is much harder to crack than one with low entropy. 
+Predicting the nature of passwords is a common approach for attackers. They know that people use 0 for O, or 1 for i. They know people may choose their favourite football team, or their child's name, in the password. All of these things are leveraged by an attacker to reduce the number of guesses they need to crack the password. A low entropy password allows the attacker to narrow the space of possible passwords.  Entropy, therefore, is the second pillar of password strength. A password that has high entropy is much harder to crack than one with low entropy. 
 
 
 
@@ -100,6 +100,10 @@ All the above confirms the strongest password: a long sequence of numbers and le
 Great password. Ultimately, It's strong because it's _hard to guess_. It's also really, really hard to memorise. There's no use having a great password if I can't remember it when I need to log on to a website. We need a way to make the password _easy to remember_. This maxim, _hard to guess, easy to remember_, is the foundation of how we think about passwords. 
 
 [Gosh this is hard to write, it's all over the place]
+
+Edward Snowden has a bit about this. He says you ought think of a memorable phrase like, `margaret thatcher is 100% sexy`. Then
+
+This is all great in theory, but it doesn't speak to how we ought to use and manage passwords. For that, we need to examine passwords in the wild.
 
 ---
 
@@ -173,11 +177,20 @@ But let's give websites and their designers the benefit of the doubt (we shouldn
 
 ### cracking passwords
 
-Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. 
+Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. The basics are as follows: you get a hashed list of passw
+// TO DO
 
 This section (may be moved) explores how password hashes are cracked. Will use some examples from (https://www.tunnelsup.com/getting-started-cracking-password-hashes/), john the ripper, hashcat etc. Just give the reader an idea of what the benchmarks are.
 
 The idea is to show that it's not that hard to crack passwords, anyone can do it, and perhaps a little exploration as to _how_ passwords are cracked. The theme is to talk about how our password rules can be manipulated
+
+{{< expandable label="are PINs safe?" level="3" >}}
+
+One thing that occurred to me when I was first introduced to all of this was that PINs must be unsafe, right? There are only 10,000 possible PINs, which is nothing to a computer!
+
+
+
+{{< /expandable >}}
 
 ### memory 
 
@@ -208,6 +221,8 @@ It's tempting to come up with a set of rules that means you never have to rememb
 Seems perfect. All you have to remember is the rule, and then every time you visit the website you can reconstruct your password on the fly. As long as the rule is sufficiently complex, there's no way an attacker could guess your rule.
 
 Maybe. There's no guarantee that your idea is unique. Your carefully crafted rule might be something an attacker has (1) already thought of or (2) encountered it before in another victim. As we saw earlier, once attackers have discovered a rule, they can easily leverage it in an attack.
+
+A good litmus test for a rule is, if I tell someone else about the rule, does it make my password vulnerable?
 
 #### write them down 
 

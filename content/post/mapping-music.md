@@ -68,7 +68,7 @@ The people behind Spotify are saints. They've exposed an **API** (**A**pplicatio
 
 Through this API, we can leverage (*read*: abuse) a whole suite of Spotify's features. The first, and perhaps most important, is the search feature. We can search for any song by title, artist, album, etc. Spotify gives every song a unique identifier, which is part of the information that's returned by a search. That's what we'll store. The second is the playback feature. We can play any song on Spotify by referencing its unique identifier. With a list of unique identifiers that we searched for earlier, we can play them back in any order we choose.
 
-{{< expandable label="Application Programming Interfaces" >}}
+{{< expandable label="Application Programming Interfaces" level="3">}}
 
 Any large computer program is a collection of smaller programs and systems working in harmony to solve problems. Application Programming Interfaces are one of mechanisms use to glue these different parts together.
 
