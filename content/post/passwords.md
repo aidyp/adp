@@ -56,7 +56,7 @@ Length. By miles.
 
 This distinction between length and depth is not always so clear cut. Take xkcd's great comic on passwords,
 
-// Link to comic goes here
+![Alt](https://imgs.xkcd.com/comics/password_strength.png )
 
 How can we evaluate the space of this password under our model? `correcthorsebatterystaple` is 25 symbols long, from a symbol set of 26 letters. This is pretty strong. A computer would have a hard time guessing this. Using our equation, we get
 
@@ -136,9 +136,9 @@ hobbes |    user      | ilovetuna
 
 Every time a user logs on to the website, they present their username and password. The website then checks the password against this list of passwords. If it's correct, access granted. If not, try again. To prevent an attacker from just trying every password under the sun, we can design our website to lock access after someone has failed to log in multiple times.
 
-This, while necessary, is not sufficient protection. Anyone with access to the password list can pretend to be any user. This password list must be protected. Disaster would strike if it fell into the wrong hands. You could encrypt the password list, but you'd still need to have the encryption key somewhere. This is a little harder for an attacker, as she now must steal both the key and the list, but it still isn't a meaningful barrier. These kinds of breaches happen [all the time](https://en.wikipedia.org/wiki/List_of_data_breaches)
+This, while necessary, is not sufficient protection. Anyone with access to the password list can pretend to be any user. This password list must be protected. Disaster would strike if it fell into the wrong hands. You could encrypt the password list, but you'd still need to have the encryption key somewhere. This is a little harder for an attacker, as she now must steal both the key and the list, but it still isn't a meaningful barrier. 
 
-The question is, how can these passwords be protected, even if (when) this master list is stolen?
+You might hope it's rare that data is stolen from websites. Unfortunately, your hope is unfounded. These kinds of breaches happen [all the time](https://en.wikipedia.org/wiki/List_of_data_breaches). The question is, how can these passwords be protected, even if (when) this master list is stolen?
 
 ### make a hash of it
 
@@ -171,7 +171,7 @@ If all this is done correctly (along with a few other tricks, but that's out of 
 
 The above is an over simplification of the best practice to store passwords. Making sure that passwords remain safe while still offering a smooth service to thousands of users is difficult. Companies and organisations get it wrong, a lot. Big ones, too. In {date}, it was leaked that Apache were incorrectly storing their passwords. The details are technical, I've hidden them away in the below tab, but the point remains; you cannot always rely on websites to keep your passwords safe. 
 
-Security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. 
+Security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. There are security weaknesses all the time. Even in the areas we
 
 But let's give websites and their designers the benefit of the doubt (we shouldn't) and assume they always use the latest and greatest in password protection (they don't). How safe are your passwords under this assumption?
 

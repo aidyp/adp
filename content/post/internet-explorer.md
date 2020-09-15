@@ -13,7 +13,7 @@ This blog post is an exploration into the wiring of the internet. When we move i
 
 ### addressing the internet
 
-When I was fifteen I had (or I thought I had) this very witty desktop background,
+When I was fifteen I had (or I thought I had) this real funny desktop background,
 
 ![Alt](/pictures/google_bit.jpg)
 
@@ -83,10 +83,10 @@ An example `traceroute` output looks like this,
 ```
 picard@voyager: traceroute 93.184.216.34
 /* prior hops */
-7  62.6.201.145 (62.6.201.145)  16.680 ms  14.572 ms  14.565 ms
+7  62.6.201.145 (62.6.201.145)  16.680 ms
 /* later hops */
 ```
-The first number, `7` is the index of the hop. In this case, it's the 7th router along the path. `(62.6.201.145)` is the address of that router. `16.860ms 15.572ms 14.565ms` are the total times taken between sending the packet from the source machine, and receiving the error message from the router. The internet is sometimes unreliable, so `traceroute` sends multiple packets for accuracy.
+The first number, `7` is the index of the hop. In this case, it's the 7th router along the path. `(62.6.201.145)` is the address of that router. `16.860ms` is the total time taken between sending the packet from the source computer, `voyager`, and receiving the error message from the router. 
 
 
 ### houston, we need a visual
@@ -180,7 +180,7 @@ Some of the letters are a bit jumbled up on google maps. Hop `D` and hop `F` hav
 
 ![Alt](/pictures/ldn_bzl_brt.png "First stop, High Wycombe?")
 
-My internet service provider is BT, who divide their infrastructure up into 'code' nodes and 'metro' nodes. The core nodes are where the serious equipment is. If you imagine the internet like the road network, the links between the core nodes are akin to motorways. The locations of the core nodes are public knowledge. Here's a map,
+My internet service provider is BT, who divide their infrastructure up into 'code' nodes and 'metro' nodes. The core nodes are where the serious equipment is. If you imagine the internet like the road network, the core nodes act as junctions and the links between the core nodes are akin to motorways. The locations of the core nodes are public knowledge. Here's a map,
 
 ![Alt](https://kitz.co.uk/adsl/images/21CN_core_map_location.png "All routes lead to London")
 
