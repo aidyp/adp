@@ -159,6 +159,8 @@ This gives websites a safer way to store your passwords. Suppose your password w
 
 ```
 == user accounts - TOP SECRET! == 
+user   | password hash
+...
 calvin | xjaj...ded  (The hash of 'schoolsux')
 hobbes | 3jfj...ttb  (The hash of 'ilovetuna')
 ```

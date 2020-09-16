@@ -201,6 +201,18 @@ Some of these disputes have been legendary, like in 2010 when two internet servi
 
 Once our tiny packets reach a peering node,  they traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
+![Alt](/pictures/cross_continent.png "around the world in 80ms")
+
+This cable is the FLAG Europe-Asia. We don't know for certain that this is the cable it took, but I'd like to think it boarded here.
+
+![Alt](/pictures/date_line.png "do timezones affect data?")
+
+And then finally, to New Zealand. One last journey for our humble packet.
+
+![Alt](/pictures/final_leg.png "there and back again")
+
+
+
 ### coming full circle
 
 `traceroute` can only tell us the path packets take on the way to the destination. It can't determine which route the packets take to return to us. Routing on the internet is complicated and dynamic; different days will yield different routes. Perhaps `www.govt.nz`  sent the reply back the same way, or it may have decided on a different route. There are routers along on the west coast of the US. From there, packets would have travelled across the states to the east coast. Then they'd have boarded a transatlantic cable to the UK. After bouncing around London for a little while, the packets would have eventually reached my laptop.
@@ -209,9 +221,7 @@ Once our tiny packets reach a peering node,  they traverse seas and oceans on th
 
 ## one small hop for data, one giant leap for information
 
-The total time it took for the packet to go to New Zealand and back was 236 milliseconds. For context, the average human reaction time is 215 milliseconds. It takes approximately the same time for information to cross the globe as it does for you to react to it. This is _fast_. But it can get faster. Today's internet aims to reduce the time you have to wait for the content you want. Why should I have to travel all the way to New Zealand just to view a website? 
-
-They can meet me in the middle. Digital information can be copied almost instantaneously. A website that was created in New Zealand can be copied and replicated on a server closer to home. This principle of replicating data closer to the consumer is called **caching**. Take `netflix.com`. It's an American company, so in theory I have to send data to America to get movies. In practice, `netflix.com` has servers in the UK that have copies of all the content. If I want to watch a movie, it will be downloaded from a server much closer to my computer. Netflix did something like this when it was a DVD rental company. They'd have depots from which they could distribute physical disks. In the digital world, it's much easier to clone information. Services like Netflix can proliferate around the globe with ease.
+The total time it took for the packet to go to New Zealand and back was 236 milliseconds. For context, the average human reaction time is 215 milliseconds. It takes approximately the same time for information to cross the globe as it does for you to react to it. This is _fast_. But it can get faster. Engineers and computer scientists of the modern internet work tirelessly to bring more information to more people quicker than ever.
 
 I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet.
 
