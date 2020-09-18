@@ -221,9 +221,9 @@ And then finally, to New Zealand. One last journey for our humble packet.
 
 ## one small hop for data, one giant leap for information
 
-The total time it took for the packet to go to New Zealand and back was 236 milliseconds. For context, the average human reaction time is 215 milliseconds. It takes approximately the same time for information to cross the globe as it does for you to react to it. This is _fast_. But it can get faster. Engineers and computer scientists of the modern internet work tirelessly to bring more information to more people quicker than ever.
+The total time it took for the packet to go to New Zealand and back was 236 milliseconds. For context, the average human reaction time is 215 milliseconds. It takes approximately the same time for information to cross the globe as it does for you to react to it. This is _fast_. But it can get faster. Engineers and computer scientists of the modern internet work tirelessly to bring more information to more people quicker than ever. 
 
-I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. And we're not done yet.
+I read once that one aim of human progress is to compress the space and time between people. I think the internet is part of that. The wires and cables that connect it are the threads that tie the modern world together.  Zooming out to look at the whole, it's extraordinary just how well the world is connected. [And we're not done yet.](https://en.wikipedia.org/wiki/Satellite_internet_constellation)
 
 ![Alt](https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg "The starlink satellite array")
 

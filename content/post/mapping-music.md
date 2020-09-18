@@ -116,11 +116,7 @@ I wrote some code to implement this idea, and then borrowed some graph visualisa
 
 ![Alt](/pictures/song_constellation.png "ground control to major song")
 
-Now that I look at it, it is less like a graph and more like constellations. Here's a closer look at one such constellation, with track labels preserved.
-
-// Graph of a zoomed in version with the labels attached.
-
-Now that the graph exists, the next task is to determine the natural way to play it back.
+Now that I look at it, it is less like a graph and more like constellations. With the graph built, all that remains is to play it back.
 
 ------
 
@@ -129,19 +125,21 @@ Now that the graph exists, the next task is to determine the natural way to play
 ### exploring the graph
 {{< spotify "6Qb7gtV6Q4MnUjSbkFcopl">}}
 
-Now that the song graph is constructed, how best to play it back?
+We have to start somewhere. In fact, we can start anywhere. So it's best to pick randomly. This forms a graph with one song as the starting point, or root. Within computer science there are two classic ways to explore a graph like this, **depth first search** and **breadth first search**. Consider the following song graph, with a "root" song of `A`. 
 
-We have to start somewhere. In fact, we can start anywhere. So it's best to pick randomly. 
+![Alt](/pictures/music_tree.png)
 
-// Diagram of song graph with one coloured in
+A breadth-first search explores a graph along it's "length". We would play each song connected to `A` before going deeper down the graph. The play order in this case would be `A`, `B`, `C`.
 
-There are two classic ways to explore a graph. Go wide, or go long. Specifically,
+![Alt](/pictures/breadth_first.png)
 
-// Diagram of song graph with the 'wide' version and also the 'deep' version.
+A depth-first search explores a graph along it's "height". We'd prefer to explore one line of the song graph to its end, rather than explore multiple lines. The play order in this case would be `A`, `B`, `E`.
 
-In this case, the 'depth' approach makes the most sense. One song ought naturally follow another. We want to follow one line to its end, rather than start many different lines all at once. 
+![Alt](/pictures/depth_first.png)
 
-// Should I include code for a depth-first search? 
+In this case, the 'depth' approach makes the most sense. One song ought naturally follow another. We want to follow one strand to the end, rather than start new strands. 
+
+Sometimes there will be a choice to make. In the example above, we could select either of the two strands. How ought we decide? At the moment, we have no way to indicate whether the strength of one connection is greater than that of any other. In which case, it makes the most sense to decide randomly. This has the additional, and pleasant, effect of making it so that you'll get slightly different experiences each time. 
 
 
 
@@ -151,4 +149,4 @@ In this case, the 'depth' approach makes the most sense. One song ought naturall
 ### onwards and upwards
 {{< spotify "5R96PHcqOGjgj23D98F6mf">}}
 
-There remains a lot unformed in this idea
+Of building the graph and playing it, building is the more interesting task. If you were given a well-formed song graph, deciding how it should be played is an easy task. Forming the song-graph in the first place is much more interesting.
