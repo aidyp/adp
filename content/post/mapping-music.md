@@ -4,10 +4,17 @@ tags: ["exploration", "music", "maps"]
 title: "mapping music"
 ---
 
+I was going a bit mad during lockdown, and this was one of the small projects that kept me going. 
+
+It also helped get me a job!
+
+---
+
 ## mapping music
+
 {{< spotify "7G6oI8xoGa62LGvE2xjtfP">}}
 
-During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways to listen to music. 
+During lockdown, like you, I've listened to *a lot* of music. I've listened to so much music that I've found myself thinking about how to think about the ways I listen to music. 
 
 ### oh man you're gonna *love* this next track 
 
@@ -23,27 +30,23 @@ Let's find out.
 
 {{< spotify "3gRlmtdCyNoKiyozn2pqc9">}}
 
-We can formalise this link between two arbitrary songs, A and B. Let's say `A --> B` means, "After song `A`, I want to listen to song `B`". 
-
-// Drawing here
-
-Now that we have defined this relationship we can use some mathematics to examine its nature.
-
-
+We can formalise this link between two arbitrary songs, A and B. Let's say `A --> B` means, "After song `A`, I want to listen to song `B`". Now that we have a definition for this relation, we can ask some other questions of it. The basic properties of any relation are **symmetry**, **reflexivity**, and **transitivity**.
 
 **symmetry**
 
-A relation (let's call it `r`) is symmetric if `A r B` implies that `B r A`. In our case, if you want to listen to song `B` after listening to `A` , does it follow that you'd be happy to listen to `A` after `B`?
+Our relation is symmetric if `A --> B` implies that `B --> A`.That is, if you want to listen to song `B` after listening to `A` does it follow that you'd be happy to listen to `A` after `B`?
 
-In my opinion, yes. The link between the two songs can be traversed in either direction.
+In my opinion, yes. The link between the two songs can be traversed in either direction. 
+
+**reflexivity**
+
+Our relation is reflexive if `A --> A` is a valid relation. Reflexivity in this case asks whether a song can follow itself. In theory, there's no reason why you couldn't listen to the same song again. In practice, it would make for a poor DJ. I thought to ban reflexivity, so as to prevent songs repeating.
 
 **transitivity**
 
-A relation (`r` again) is transitive if you can connect disjoint relations. Specifically, suppose we have 3 elements with 2 relations. The relations are, `A r B` and `B r C`. A relation is transitive if, from these, it follows that `A r C`.
+Our relation iis transitive if you can connect disjoint relations. Specifically, suppose we have 3 songs and 2 relations. The relations are, `A --> B` and `B --> C`. The relation is transitive if, from these, it follows that `A --> C`.
 
-I argue that, for our relation, it shouldn't be transitive. I might want to listen to {song 2} after {song 1}. Then, after {song 2}, I might be feeling {song 3}. That doesn't mean I'd want to jump straight from {1} to {3} -- it'd to be too jarring!
-
-
+I argue that it shouldn't be transitive. I might want to listen to {song 2} after {song 1}. Then, after {song 2}, I might be feeling {song 3}. That doesn't mean I'd want to jump straight from {1} to {3} -- it'd to be too jarring!
 
 We can use this relation to link different songs together. Here's what it might look like, 
 
@@ -72,11 +75,11 @@ Through this API, we can leverage (*read*: abuse) a whole suite of Spotify's fea
 
 Any large computer program is a collection of smaller programs and systems working in harmony to solve problems. Application Programming Interfaces are one of mechanisms use to glue these different parts together.
 
-Spotify presents a **R**E**ST**ful (**R**epresential **S**tate **T**ransfer) API. The terminology is a little opaque, but the intuition isn't so tricky. The idea is analogous to a vending machine. You provide the vending machine with a code and, if the code is valid, the vending machine provides you back with the drink corresponding to that code. We use the digit code as an interface between ourselves and the vending machine. That interface was designed by the vending machine manufacturer to make it easy to get the drink you want.
+Spotify presents a **R**E**ST**ful (**R**epresential **S**tate **T**ransfer) API. The terminology is a little opaque, but the intuition is easy to grasp. Think about how you use a vending machine. You provide the vending machine with a code and, if the code is valid, the vending machine provides you back with the drink corresponding to that code. We use the digit code as an interface between ourselves and the vending machine. That interface was designed by the vending machine manufacturer to make it easy to get the drink you want.
 
 ![Alt](/pictures/vending_machine.png "thirsty work")
 
-Spotify's API is similar. The developers have designed an interface that allows computer programs to easily get the data they want. If we want to search a song, we enter a specific search code. Then, if the code is valid, Spotify provides you back with the results of your search. In Spotify's case, this result is the unique identifier for the song. 
+Abstracting a little, we provided an instruction to the vending machine through an interface. The vending machine then carried out that instruction. Spotify's API is similar. The developers have designed an interface that allows computer programs to easily get the data they want. If we want to search a song, we enter a specific search code. Then, if the code is valid, Spotify carries out a search instruction and provides you back with the results of that search. In this case, we get the unique identifier for the song.
 
 ![Alt](/pictures/spotify_vending_machine.png "hello from the other side")
 
@@ -112,11 +115,15 @@ Then we can listen along, adding songs as we see fit. As we listen, the graph wi
 
 ![Alt](/pictures/listen_along_fleshing_out.png)
 
-I wrote some code to implement this idea, and then borrowed some graph visualisation software online to see what the results would look like. After a few nights of listening, my final song graph had grown to be pretty big!
+I wrote some code to implement this idea, and then [borrowed some graph visualisation software](https://netwulf.readthedocs.io/en/latest/) to see what the results would look like. After an hour or so of listening, some distinct groups had started to form,
 
-![Alt](/pictures/song_constellation.png "ground control to major song")
+![Alt](/pictures/early_on_mm.png "pentagram of chill")
 
-Now that I look at it, it is less like a graph and more like constellations. With the graph built, all that remains is to play it back.
+A few nights later, and the graph had mutated into several different chains.
+
+![Alt](/pictures/song_constellation.png)
+
+On reflection, it looks more like constellations.
 
 ------
 
@@ -139,9 +146,7 @@ A depth-first search explores a graph along it's "height". We'd prefer to explor
 
 In this case, the 'depth' approach makes the most sense. One song ought naturally follow another. We want to follow one strand to the end, rather than start new strands. 
 
-Sometimes there will be a choice to make. In the example above, we could select either of the two strands. How ought we decide? At the moment, we have no way to indicate whether the strength of one connection is greater than that of any other. In which case, it makes the most sense to decide randomly. This has the additional, and pleasant, effect of making it so that you'll get slightly different experiences each time. 
-
-
+Sometimes there will be a choice to make. In the example above, we could select either of the three strands. How ought we decide? At the moment, we have no way to indicate whether the strength of one connection is greater than that of any other. It therefore makes the most sense to decide randomly. This has the additional and pleasant effect of making it so that you'll get a different listening experience each time. 
 
 ------
 
