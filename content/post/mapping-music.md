@@ -155,3 +155,5 @@ Sometimes there will be a choice to make. In the example above, we could select 
 {{< spotify "5R96PHcqOGjgj23D98F6mf">}}
 
 Of building the graph and playing it, building is the more interesting task. If you were given a well-formed song graph, deciding how it should be played is an easy task. Forming the song-graph in the first place is much more interesting.
+
+There are other ways to relate songs and artists to each other. A favourite pastime of mine is navigating this [online music map](https://www.music-map.com/).
