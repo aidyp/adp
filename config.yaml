@@ -10,6 +10,8 @@ params:
   footer: Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Hosted on [Netlify](https://netlify.com)
   katex: true
   search: true
+  customCSS:
+    - css/tweaks.css
 
 menu:
   nav:
