@@ -6,7 +6,7 @@
     <description>Recent content on adp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://adpblg.co.uk/index.xml" rel="self" type="application/rss+xml" />
     
@@ -53,15 +53,6 @@ Now, years later, I have a better background and a computer science degree. But 
       <description>Introduction about this piece. Ultimately I wrote it because I was bored, which is not a great intro is it?
  hello world When I first began my formal study of computer science at high school, my teacher asked me to write a program that would dispense change from a self-service machine.
 The rules were simple. My machine would only have 10p, 5p, 2p, and 1p coins. When it was time to dispense change, my program would take as input the amount in pennies and dispense the minimum number of coins required to make the correct change.</description>
-    </item>
-    
-    <item>
-      <title>cryptography</title>
-      <link>https://adpblg.co.uk/cryptography/</link>
-      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://adpblg.co.uk/cryptography/</guid>
-      <description>Cryptography is a personal passion of mine. Here you can find links to helpful resources to learn more about the subject</description>
     </item>
     
   </channel>
