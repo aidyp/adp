@@ -46,7 +46,7 @@ Our relation is reflexive if `A --> A` is a valid relation. Reflexivity in this 
 
 Our relation iis transitive if you can connect disjoint relations. Specifically, suppose we have 3 songs and 2 relations. The relations are, `A --> B` and `B --> C`. The relation is transitive if, from these, it follows that `A --> C`.
 
-I argue that it shouldn't be transitive. I might want to listen to {song 2} after {song 1}. Then, after {song 2}, I might be feeling {song 3}. That doesn't mean I'd want to jump straight from {1} to {3} -- it'd to be too jarring!
+I argue that it shouldn't be transitive. I might want to listen to {song 2} after {song 1}. Then, after {song 2}, I might be feeling {song 3}. That doesn't mean I'd want to jump straight from {1} to {3} -- it'd be too jarring!
 
 We can use this relation to link different songs together. Here's what it might look like, 
 

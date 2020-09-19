@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>command-line on adp</title>
+    <link>https://adpblg.co.uk/tags/command-line/</link>
+    <description>Recent content in command-line on adp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://adpblg.co.uk/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>p4ssw0rd$</title>
+      <link>https://adpblg.co.uk/post/passwords/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/passwords/</guid>
+      <description>There&amp;rsquo;s a lot of password advice out there. Some if it is good, and some of it is really bad. This post is a quick dive into passwords; there&amp;rsquo;s theory, practice, and even a bit of hacking. By the end you&amp;rsquo;ll be able to give out your own, high quality, password advice.
+ password_theory_123 password space Passwords exist in two dimensions, which we shall refer to as length and depth. A password is constructed from one or more elements, or symbols for the purpose of this post.</description>
+    </item>
+    
+    <item>
+      <title>counting change</title>
+      <link>https://adpblg.co.uk/post/counting-change/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/counting-change/</guid>
+      <description>Introduction about this piece. Ultimately I wrote it because I was bored, which is not a great intro is it?
+ hello world When I first began my formal study of computer science at high school, my teacher asked me to write a program that would dispense change from a self-service machine.
+The rules were simple. My machine would only have 10p, 5p, 2p, and 1p coins. When it was time to dispense change, my program would take as input the amount in pennies and dispense the minimum number of coins required to make the correct change.</description>
+    </item>
+    
+  </channel>
+</rss>
