@@ -26,7 +26,7 @@ Let's find out.
 
 ------
 
-#### theory (better title needed)
+#### sketching a theory
 
 {{< spotify "3gRlmtdCyNoKiyozn2pqc9">}}
 
@@ -61,7 +61,7 @@ The theory now cemented, we need now to work out how to:
 1. Build this graph of songs
 2. Play it
 
-To do the first we need a large, easy-to-search database of songs. To do the second, we need a tool that can play songs from that database. Spotify provides both.
+To do the first we need a large, easy-to-search database of songs. To do the second, we need a tool that can play songs from that database. [Spotify](www.spotify) provides both.
 
 ------
 
@@ -157,3 +157,4 @@ Sometimes there will be a choice to make. In the example above, we could select 
 Of building the graph and playing it, building is the more interesting task. If you were given a well-formed song graph, deciding how it should be played is an easy task. Forming the song-graph in the first place is much more interesting.
 
 There are other ways to relate songs and artists to each other. A favourite pastime of mine is navigating this [online music map](https://www.music-map.com/).
+
