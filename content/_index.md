@@ -2,9 +2,5 @@
 
 ![Alt](/pictures/calvin_and_hobbes.jpg "with love to Bill Waterson")
 
-This blog aims to explore computers in an intuitive way. Each post asks a question of our machines and tries to present the answer plainly.
-
-I really need to rewrite this.
-
-There are also jokes. 
+This blog is a collection of thoughts and projects about computers. It's written for people who are interested in technology, but don't have a computer science degree. There are also jokes!
 
