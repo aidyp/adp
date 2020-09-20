@@ -1,13 +1,13 @@
 ---
-date: "2014-09-28"
-tags: ["hugo", "theme", "command-line"]
+date: "2020-06-25"
+tags: ["algorithms"]
 title: "counting change"
 toc: false
 ---
 
-Introduction about this piece. Ultimately I wrote it because I was bored, which is not a great intro is it?
+A friend of mine wanted to learn how to code over lockdown. While helping him, I found myself reminiscing on my own learning experience.
 
-
+This post is a tour through one algorithm at increasing levels of complexity. By the end you'll have a good grasp of the solution. You'll also realise you knew the answer all along!
 
 ---
 
@@ -15,9 +15,7 @@ Introduction about this piece. Ultimately I wrote it because I was bored, which 
 
 When I first began my formal study of computer science at high school, my teacher asked me to write a program that would dispense change from a self-service machine. 
 
-The rules were simple. My machine would only have 10p, 5p, 2p, and 1p coins. When it was time to dispense change, my program would take as input the amount in pennies and dispense the minimum number of coins required to make the correct change. For the sake of pedagogy, my teacher told us that we would never run out of coins.
-
-A quick sketch of a sample input might look like this,
+The rules were simple. My machine would only have 10p, 5p, 2p, and 1p coins. When it was time to dispense change, my program would take as input the amount in pennies and dispense the minimum number of coins required to make the correct change. For the sake of pedagogy, my teacher told us that we would never run out of coins. Here's an example.
 
 ```
 input  : 31  // 31p to dispense in change
@@ -48,13 +46,14 @@ I coded this algorithm up, e-mailed it to my teacher, and continued on to the ne
 
 ## i can do everything
 
-The "counting change" problem came up again during my first year of university. I was in an afternoon lecture on the theory of computation. My lecturer used my solution to the problem as a throwaway example of a "greedy algorithm". I thought the title rather appropriate.
+The "counting change" problem came up again during my first year of university. I was in an afternoon lecture on the theory of computation. My lecturer used my solution to the problem as a throwaway example of a "greedy algorithm". I thought the definition appropriate.
 
 
 
-Then he lobbed a wrench at it. Suppose we loosen the constraints on change and allow non-standard coins. Instead of 1p, 5p, 10p, coins, we might have 1p, 3p, 4p. How does our greedy algorithm hold up?
+Then he broke it. Suppose we loosen the constraints on change and allow non-standard coins. Instead of 1p, 5p, 10p, coins, we might have 1p, 3p, 4p. How does our greedy algorithm hold up?
 
 ```
+coins  : [1,3,4]
 input  : 6
 output : 4, 1, 1
 ```
@@ -97,7 +96,7 @@ input : 45
 
 It gets to the right answer, but there's so much needless work. This method tries lots of different options before settling on the best one. It's inefficient.
 
-I tried to think about a more efficient way to compute all these possibilities, but I was out of time. The class was moving on. The next topic was Dijkstra's Algorithm, which is concerned with finding the shortest path from A to B. Dijkstra made sure to avoid any distractions, so I decided to do the same.
+I tried to think about a more efficient way to compute all these possibilities, but I was out of time. The class was moving on. We continued on to the next problem, one of finding the shortest route between A and B.
 
 ------
 
@@ -107,18 +106,27 @@ I tried to think about a more efficient way to compute all these possibilities, 
 
 #### back to school
 
-This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this. The change counting problem was a popular example. I coded up the naive solution, and submitted it. My program ran, and failed. It had taken too long. As the number to make change from increases, the number of possible coin combinations grows too large. I needed to take a step back.
+This problem came up a third time in my third year. It was time to think about jobs. For computer science undergraduates this means sweating blood solving puzzles like this so that, at an interview with a top tech firm, you can solve a puzzle like this. The change counting problem was a popular example. I coded up the naive solution and submitted it. My program ran, and failed. It had taken too long. As the number to make change from increases, the number of possible coin combinations grows too large. I needed to take a step back.
 
-Recall the conditions that crashed our greedy algorithm, `coins = [1, 3, 4], input = 6`.  The correct answer is 2 coins, as 6 = 2 * 3. You didn't have to calculate this, you just knew it. To be precise, you _remembered_ it. When you were younger, primary school maths teachers drilled times tables into your memory. They installed a lookup table into your brain that you could call on whenever needed. 
+Recall the conditions that crashed our greedy algorithm, `coins = [1, 3, 4], input = 6`.  
 
-This lookup table is not very large. For most of us, it stops at 144 = 12*12. The human mind has far more interesting things to commit to memory than a huge table of numbers. Computers, on the other hand, do not. And they can remember a great deal. 
+```
+coins  : [1,3,4]
+input  : 6
+output : 4, 1, 1
+```
 
-This idea, that it is faster to remember an answer than to calculate it, is a fundamental pillar in algorithmic thinking. We call it "time versus space complexity." When multiplying, is it better to make space to remember the answer, or take the time to calculate it?
+The correct answer is 2 coins, as 6 = 2 * 3. You didn't have to calculate this, you just knew it. To be precise, you _remembered_ it. When you were younger, your maths teacher drilled  a times tables into your memory. They installed a lookup table into your brain that you could call on whenever needed. 
 
-The answer is somewhere in between. Suppose you are asked to answer a multiplication question, 14 times 12. You - certainly I - would struggle to remember the answer. Adding 12 together 14 times in your head is a little too time-consuming. The most efficient way is to recall from your mental lookup table that 12\*12 = 144 and then add the remaining 2*12 = 24, to get 14 * 12 = 168. As an algorithm, it might look something like this,
+This lookup table is not very large. For most of us, it stops at 144 = 12*12. And for good reason. The human mind has far more interesting things to commit to memory than a huge table of numbers. Computers, on the other hand, do not. And they can remember a great deal. 
 
-1. Remember the answer to a smaller multiplication
-2. Combine the remembered answers to answer the bigger multiplication
+This idea, that it is faster to remember an answer than to calculate it, is a fundamental pillar in algorithmic thinking. We call it **time vs space complexity**. When solving a puzzle, is it better to make space to remember the answer for the future, or take the time to calculate it each time?
+
+The answer is somewhere in between. Suppose you are asked to answer a multiplication question, 14 times 12. You - certainly I - would struggle to remember the answer. Adding 12 together 14 times in your head is a little too time-consuming. The most efficient way is to recall from your mental lookup table that 12\*12 = 144 and then add the remaining 2*12 = 24, to get 14 * 12 = 168. This process can be boiled down to a series of steps,
+
+1. Split the big problem into smaller multiplication problems
+2. Remember the answer to each smaller multiplication
+3. Combine the remembered answers to answer the bigger multiplication problem
 
 #### cashing it in
 
@@ -142,17 +150,17 @@ I want to draw your attention to three cells, **[2,1]**, **[5,4]**, and **[6,3]*
 
 ##### [2,1] | 2 = 1 + 1
 
-If you have one penny, add a second and you get two pennies. Abstracting a little, we know the optimal solution for the *value*, 1. It follows that the optimal solution for the *value*, 2, is the optimal solution for 1, add one extra coin. 
+If you have one penny, add a second and you get two pennies. Abstracting a little, we know the optimal solution for the *value*, 1. It follows that the optimal solution for the *value*, 2, is the optimal solution for the value 1, add one extra coin. 
 
 Suppose we define a function, C(), that takes as input the amount you want to make change from, and returns the minimum number of coins required. We know,
 
 $$C(1) = 1$$
 
-because you just use the 1p coin. Then,
+because you just use the 1p coin. That's easy. What about when you want to get the minimum change for 2? Then,
 
 $$C(2) = C(1) + \text{one coin}$$
 
-In that case, that extra coin is the 1p coin. So,
+In this case, that extra coin is the 1p coin. So,
 
 $$C(2) = 2$$
 
@@ -247,16 +255,17 @@ Best change for 10 is 3 coins (3,2) + (4,1)
 ...
 ```
 
+This pattern continues. There are certainly ways to improve this approach further, but they're not the subject for this blog. Besides, the next problem beckons.
+
 ------
 
 
 
 ## exit(0)
 
-This concept, named "dynamic programming", is one of the more elegant weapons in a programmer's armoury. The idea is simple. You just,
+This concept is called **dynamic programming**. It's one of the more elegant weapons in a programmer's armoury. You're already familiar with the steps, you've used them before without thinking.
 
 1. Remember the best solutions to smaller problems and,
 2. Combine those solutions to solve bigger problem.
 
-The change-making problem is just one application of this idea. Within computer science, there are many more applications. But I think that this idea has applications to other fields. To me, computer science is the discipline of layering ideas on top of each other. Dynamic programming is a wonderful manifestation of this process, so I decided to write a blog about it. 
-
+The change-making problem is just one application of this idea. Within computer science, there are [many more](https://blog.usejournal.com/top-50-dynamic-programming-practice-problems-4208fed71aa3). But I think that this idea has a wider reach. Technology, I think, is the disciplined layering of ideas on top of one another. So remember this idea. You never know when you'll use it to build something new.

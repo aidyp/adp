@@ -50,7 +50,7 @@ This produces an important question. In order to maximise password space, which 
 
 Length. By miles.
 
-// Graphs go here.
+// Put something here to visualise this, but not sure how
 
 ### sideways thinking
 
@@ -173,7 +173,7 @@ If all this is done correctly (along with a few other tricks, but that's out of 
 
 The above is an over simplification of the best practice to store passwords. Making sure that passwords remain safe while still offering a smooth service to thousands of users is difficult. Companies and organisations get it wrong, a lot. Big ones, too. In {date}, it was leaked that Apache were incorrectly storing their passwords. The details are technical, I've hidden them away in the below tab, but the point remains; you cannot always rely on websites to keep your passwords safe. 
 
-Security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. There are security weaknesses all the time. Even in the areas we would expect, like rate limiting the number of guesses. 
+Moreover, security doesn't really make money. Given a choice between a feature that will attract more users, or improving password security, organisations will lean to the former. There are security weaknesses all the time. Even in the areas we would expect, like making sure someone can't try loads of passwords in a short time to login.
 
 But let's give websites and their designers the benefit of the doubt (we shouldn't) and assume they always use the latest and greatest in password protection (they don't). How safe are your passwords when hashed like this?
 

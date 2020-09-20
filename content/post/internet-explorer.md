@@ -1,5 +1,5 @@
 ---
-date: "2020-06-14"
+date: "2020-07-25"
 tags: ["networks", "exploration"]
 title: "internet explorer"
 toc: false
@@ -17,11 +17,11 @@ When I was fifteen I had (or I thought I had) this real funny desktop background
 
 ![Alt](/pictures/google_bit.jpg)
 
-Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mail centres all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
+Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be subsequently delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mail centres all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 
-A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this logical mesh. It's most analogous to a postcode. Each address is sequence of numbers that identify exactly where on the internet a particular machine lies. All IP addresses follow a strict format. They are a series of four numbers, separated by dots. Each number is between 0 and 255.
+A machine's **IP** (**I**nternet **P**rotocol) address dictates where it can be found within this mesh. It's most similar to a postcode. Each address is sequence of numbers that identify exactly where on the internet a particular machine lies. All IP addresses follow a strict format. They are a series of four numbers, separated by dots. Each number is between 0 and 255.
 
 ```
 IP Format:
@@ -36,7 +36,7 @@ When we want to send a message between two points on the internet, the message i
 
 
 ### building a cyber space ship
-To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. The packets I introduced earlier look like this.
+To explore these vast reaches of cyberspace, we're going to need an appropriate vessel. The packets mentioned earlier look like this.
 
 ![Alt](/pictures/ip_packet.png)
 
@@ -61,7 +61,7 @@ The data part is for the content of the message. The header contains those label
 ```
 The numbers on the top describe the size, in bits, of each header. The first four bits of an IP header are always the `Version`. The next four bits is always the `IHL`, which stands for **I**nternet **H**eader **L**ength. It describes how big the header is going to be. Just as you can have envelopes of different sizes, IP headers can be differently sized depending on which `Options` are present. The next eight bits is for the `Type of Service`, and so on and so forth.
 
-The headers contain all the information the router needs to shift the packet along. The `Destination Address` describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now. Our focus will be on `Source Address`, `Destination Address`, and `Time to Live`.
+The headers contain all the information the router needs to shift the packet along. The `Destination Address` describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now.
 
 We're most interested in the **TTL** (**T**ime **T**o **L**ive) field. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
 
@@ -97,10 +97,10 @@ The first number, `7` is the index of the hop. In this case, it's the 7th router
 
 If we take the IP address from each router obtained by `traceroute` and plot its geographical location on a map, we can visualise the physical path that the packets take between two locations on the internet.
 
-{{< expandable label="Domain Name System" level="3" >}}
-Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address only describes a machine on the internet. [need to explain this a bit better]
+{{< expandable label="Domain Name System" level="1" >}}
+Locations on the internet are described by their IP address, but that's not how we see them in everyday usage. Instead of typing in `93.184.216.34` into a browser, we type `www.example.com`. This is a **domain name**. The early inventors in the internet realised that it just wasn't feasible to have people remember IP addresses. Moreover, an IP address only describes a machine on the internet. But a place on the internet, like a website, is not the same as the machine it is located on. Suppose you wanted to move your website to a different machine. The nature of the website hasn't changed, only its location. It would be a pain to have to both remember the IP address of your favourite website _and_ keep track of when it might change IP address.
 
-To solve this problem, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phone book. Your computer looks up the name of the website you want to visit in this phone book and gets back its IP address. That's the IP address used for all the packets sent to the website.  Your browser handles this process automatically when you make a connection to a website. You'll only ever notice this when it goes wrong. 
+To solve these problems, early pioneers of the internet invented **DNS** (**D**omain **N**ame **S**ystem). It's like a phone book. Your computer looks up the name of the website you want to visit in this phone book and gets back its IP address. That's the IP address used for all the packets sent to the website. If the IP address of the website ever changes, the website owner just updates their DNS records.
 
 {{< /expandable >}}
 
@@ -190,32 +190,32 @@ But we want to go international. To do so, we need to pass our packets over to a
 
 {{< expandable level=3 label="peering contests" >}} 
 
-Peering can be a tense subject. Both sides of the arrangement have to agree to the peering connection. When each side is sending and receiving a roughly equal amount of data (and making an equal amount of money for it!), the relationship remains stable. However, sometimes one network owner will decide that the other isn't a fair partner. They might demand a higher fee for carrying traffic, or a share of the profits.
+Peering can be a tense subject. Both sides of the arrangement have to agree to the peering connection. When each side is sending and receiving a roughly equal amount of data (and making an equal amount of money from it), the relationship remains stable. However, sometimes one network owner will decide that the other isn't a fair partner. They might demand a higher fee for carrying traffic, or a share of the other's profits.
 
 Some of these disputes have been legendary, like in 2010 when two internet service providers [went to war](https://gigaom.com/2010/12/01/comcast-level-3-battle/) with each other. These sort of disputes usually don't lead to any major disruption in service, although there can be cases where different zones in the internet can no longer reach other.
 
 {{</ expandable >}}
 
 
-### transatlanticism
+### 21st century trade winds
 
 Once our tiny packets reach a peering node,  they traverse seas and oceans on their journey to New Zealand. That they are able to do this is no small feat of engineering. There are enormous cables laid across the ocean floor that connect the networks of individual countries and continents together. These cables are [mapped here](https://www.submarinecablemap.com/). With a bit of guesswork, we might be able to figure out exactly _which_ of these submerged data pipes our packets travelled down.
 
 ![Alt](/pictures/cross_continent.png "around the world in 80ms")
 
-This cable is the FLAG Europe-Asia. We don't know for certain that this is the cable it took, but I'd like to think it boarded here.
+This cable is the FLAG Europe-Asia. We don't know for certain that this is the cable it took, but it's a pretty good guess.
 
 ![Alt](/pictures/date_line.png "do timezones affect data?")
 
-And then finally, to New Zealand. One last journey for our humble packet.
+Then across the Pacific.
 
 ![Alt](/pictures/final_leg.png "there and back again")
 
-
+And finally to New Zealand. The last few hops in the journey.
 
 ### coming full circle
 
-`traceroute` can only tell us the path packets take on the way to the destination. It can't determine which route the packets take to return to us. Routing on the internet is complicated and dynamic; different days will yield different routes. Perhaps `www.govt.nz`  sent the reply back the same way, or it may have decided on a different route. There are routers along on the west coast of the US. From there, packets would have travelled across the states to the east coast. Then they'd have boarded a transatlantic cable to the UK. After bouncing around London for a little while, the packets would have eventually reached my laptop.
+`traceroute` can only tell us the path packets take on the way to the destination. It can't determine which route the packets take to return to us. Routing on the internet is complicated and dynamic; different days will yield different routes. Perhaps `www.govt.nz`  sent the reply back the same way, or it may have decided on a different route. There are routers along on the west coast of the US. From there, packets might have travelled across the states to the east coast. Then they'd have boarded a transatlantic cable to the UK. After bouncing around London for a little while, the packets would have eventually reached my laptop.
 
 
 
