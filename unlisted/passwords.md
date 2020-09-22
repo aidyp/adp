@@ -179,8 +179,9 @@ But let's give websites and their designers the benefit of the doubt (we shouldn
 
 ### cracking passwords
 
-Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. The basics are as follows: someone steals a list of hashed passwords, and tries to guess them on their computer
-// TO DO
+Password cracking is a popular field in computing because (1) it can make you a lot of money and (2) it's interesting. The basics are, someone steals a list of hashed passwords and then tries to guess them on their computer. To give you a taste of what this looks like, we're going to crack a set of password hashes. The list is fictional, it came from a password cracking competition, but it's not dissimilar to one in the wild.
+
+
 
 This section (may be moved) explores how password hashes are cracked. Will use some examples from (https://www.tunnelsup.com/getting-started-cracking-password-hashes/), john the ripper, hashcat etc. Just give the reader an idea of what the benchmarks are.
 
@@ -193,6 +194,14 @@ One thing that occurred to me when I was first introduced to all of this was tha
 
 
 {{< /expandable >}}
+
+
+
+There is an important principle in security. The attacker needs only win _once_. 
+
+
+
+
 
 ### memory 
 
@@ -210,15 +219,18 @@ We all have so many passwords. In the past few years there has been an effort to
 
 The average person remembers something like [However many passwords they can remember, I bet it's not much]. Clearly, there's no way to remember the number of distinct passwords we need. Even if those passwords are 'easy to remember' Most people reach for one of three resolutions
 
-- Come up with a 'password rule' that doesn't mean you have to remember different passwords
-- Write all the unique passwords down somewhere
 - ~~Use the same password more than once~~
+
+- Come up with a 'password rule' so that you don't have to remember passwords
+- Write all the unique passwords down somewhere
+
+  
 
 Let's review each in turn. 
 
 #### password rule
 
-It's tempting to come up with a set of rules that means you never have to remember a password. This might be something simple like `name of website + 123`, which will produce a set of unique passwords. It might be more complex like.
+It's tempting to come up with a set of rules that means you never have to remember a password. As long as the rule is secret, then only you can get the right password. This might be something simple like `name of website + 123`, which will produce a set of unique passwords. It might be more complex like.
 
 Seems perfect. All you have to remember is the rule, and then every time you visit the website you can reconstruct your password on the fly. As long as the rule is sufficiently complex, there's no way an attacker could guess your rule.
 
