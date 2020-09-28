@@ -6,7 +6,7 @@ title: "emulation: a link to the past"
 
 A friend of mine decided to hold an elimination tournament for the best video game of all time. It got tense at times. 
 
-It was mostly nostalgia that got us going. Midway through the tournament I decided to make a console that played all game. It's a little like an altar to nostalgia. This blog post is about that.
+It was mostly nostalgia that got us going. Midway through the tournament I decided to make a console that played all those old games. An altar to nostalgia. This blog post is about that.
 
 Oh, and Pokemon Blue won the tournament.
 
@@ -21,3 +21,8 @@ Emulators are computers that pretend to be different computers.
 - experience of playing old games
 
 I needed to pick an appropriate computer. Something small, cheap and portable.
+
+
+
+
+

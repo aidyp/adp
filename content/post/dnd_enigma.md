@@ -114,7 +114,9 @@ Having undone the effects of the scrambler ring, we could now get to work undoin
 
 Now that the random element is done away with, there are some tricks we can use to crack the code. The first is **frequency analysis**. 
 
-Language is, by necessity, very well structured. Certain letters come up more often than other letters. 
+Language is, by necessity, well structured. Certain letters come up more often than other letters. For English, if you were to plot the frequency of different letters on a graph, you'd get something like this.
+
+![Alt](/pictures/eng_freq.png#center)
 
 
 
