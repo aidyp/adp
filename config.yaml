@@ -12,6 +12,8 @@ params:
   search: true
   customCSS:
     - css/tweaks.css
+  images:
+    - images/logo.svg
 
 menu:
   nav:

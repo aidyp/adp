@@ -6,3 +6,9 @@ This blog is a collection of thoughts and projects about computers. It's written
 
 There are also jokes!
 
+---
+
+I try to publish on a monthly cadence. The most recent post is
+
+### [Mapping Music](adpblg.co.uk/post/mapping-music)
+
