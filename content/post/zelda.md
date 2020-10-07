@@ -57,7 +57,9 @@ We know older games -- pieces of software -- are written for a specific hardware
 
 ![Alt](/pictures/emulator-expectations.png#center)
 
-From the software's perspective it issues orders and gets results. It doesn't know, or care, how those hardware instructions are executed. 
+From the software's perspective it issues orders and gets back results. The reason it won't work on a different computer is that the hardware of the different machine doesn't understand these orders. To solve this, we can build a translator. 
+
+
 
 It's not easy to make an emulator. Luckily, someone else has already done it. In order to make this console, we need two parts. 
 
