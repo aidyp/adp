@@ -1,5 +1,5 @@
 ---
-date: "2020-08-28"
+date: "2020-10-25"
 tags: ["exploration", "music", "maps"]
 title: "emulation: a link to the past"
 toc: false
@@ -23,11 +23,11 @@ Oh, and Pokemon Blue won the tournament.
 
 SMB3 screenshot?
 
-A computer, in its basic form, is made up of two parts: hardware and software. The hardware is the collection of electronic components that can perform different operations. Software is the list of instructions to co-ordinate all those operations into something useful.
+A computer, in its basic form, is made up of two parts: hardware and software. The hardware is the collection of electronic components that can perform different operations. Software is the list of instructions to co-ordinate all those operations into something useful. 
 
-// Diagram of software on top of hardware 
+![Alt](/pictures/software_hardware.png#center)
 
-The above diagram isn't quite accurate. Not every computer is the same. Computers are designed with different hardware to solve different problems. Newer computers have different, and better, hardware than older computers. 
+The above diagram isn't totally accurate. Not every computer is the same. Computers are designed with different hardware to solve different problems. Newer computers have different, and better, hardware than older computers. 
 
 // Diagram of "jigsaw" software + hardware
 
@@ -51,9 +51,13 @@ Consoles from the past, like the Atari, Super Nintendo, Playstation and Dreamcas
 
 ### enter emulation
 
-This is a problem many programmers were keen to solve, on account of them loving video games and hating real  work.  The idea is elegant. The older games are written for a specific hardware configuration. They'll make use of certain hardware commands and operations. If that configuration is known, you can write software that simulates it. 
+This is a problem many programmers were keen to solve, on account of them loving video games and hating real work.  Their solution is elegant. 
 
-// Diagram of 'emulator stack'
+We know older games -- pieces of software -- are written for a specific hardware configuration. The software will issue instructions to the hardware, and expect to see a result.
+
+![Alt](/pictures/emulator-expectations.png#center)
+
+From the software's perspective it issues orders and gets results. It doesn't know, or care, how those hardware instructions are executed. 
 
 It's not easy to make an emulator. Luckily, someone else has already done it. In order to make this console, we need two parts. 
 
@@ -102,7 +106,7 @@ It came with a little fan, designed to keep the computer cool while it runs. Thi
 
 Emulation is a popular field. Many programmers played _a lot_ of games as a kid. There's an ongoing project to assemble as many emulators as possible into one engine. It's called [RetroPie](https://retropie.org.uk/). 
 
-
+Installing retropie onto a Raspberry Pi isn't very difficult. Most of the heavy lifting has already been done for you. You can follow the instructions here
 
 
 
