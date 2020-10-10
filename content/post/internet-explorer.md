@@ -63,7 +63,7 @@ The numbers on the top describe the size, in bits, of each header. The first fou
 
 The headers contain all the information the router needs to shift the packet along. The `Destination Address` describes where its going, and the `Source Address` describes where it came from. There are some other headers, like `Header Checksum` and `Fragment Offset` that we'll put aside for now.
 
-We're most interested in the **TTL** (**T**ime **T**o **L**ive) field. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address`in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
+We're most interested in the **TTL** (**T**ime **T**o **L**ive) field. Packets move across the internet by traversing between routers. Each of these traversals is called a 'hop'. The `TTL` value for a packet determines how many hops a packets is permitted to make. Each router the packet passes through reduces this value by one. When the `TTL` reaches zero, the packet is dropped and its journey comes to an abrupt end. When a packet is dropped in this way, the router that jettisoned it will send a message back to the `Source Address` in the (now non-existent) packet. That message, enveloped in a fresh new IP packet, includes the IP address of that router. 
 
 It's this property that we will leverage to map out paths along the internet.
 
@@ -180,7 +180,7 @@ Some of the letters are a bit jumbled up on google maps. Hop `D` and hop `F` hav
 
 ![Alt](/pictures/ldn_bzl_brt.png "First stop, High Wycombe?")
 
-My internet service provider is BT, who divide their infrastructure up into 'code' nodes and 'metro' nodes. The core nodes are where the serious equipment is. If you imagine the internet like the road network, the core nodes act as junctions and the links between the core nodes are akin to motorways. The locations of the core nodes are public knowledge. Here's a map,
+My internet service provider is BT, who divide their infrastructure up into 'core' nodes and 'metro' nodes. The core nodes are where the serious equipment is. If you imagine the internet like the road network, the core nodes act as junctions and the links between the core nodes are akin to motorways. The locations of the core nodes are public knowledge. Here's a map,
 
 ![Alt](https://kitz.co.uk/adsl/images/21CN_core_map_location.png "All routes lead to London")
 
