@@ -10,5 +10,5 @@ There are also jokes!
 
 I try to publish on a monthly cadence. The most recent post is
 
-### [Mapping Music](adpblg.co.uk/post/mapping-music)
+### [emulation: a link to the past](adpblg.co.uk/post/zelda)
 
