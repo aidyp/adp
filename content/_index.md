@@ -2,7 +2,7 @@
 
 This blog is a collection of thoughts and projects about computers and maths. It's written for people curious about technology, but without formal knowledge. It's written by someone who just about passed their computer science degree. 
 
-![Alt](/pictures/hello_world_dark.svg#center)
+![Alt](/pictures/hello_world_piet.png#center "hello world!")
 
 There are also jokes!
 
