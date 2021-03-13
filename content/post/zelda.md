@@ -63,7 +63,7 @@ The translator takes the opcode, and maps it to the opcode that our machine can 
 
 Readers of [counting change](/post/counting-change) may notice that this approach could benefit from some 'time-vs-space' thinking. The game software is a list of pre-defined instructions. Instead of translating the instructions one by one, as they come, we could instead pre-translate them. This trade-off between converting the instructions in one go versus converting them on the fly is known as *static versus dynamic recompilation*.
 
-Unfortunately, static compilation is very difficult. The software instructions often rely on results they can't know at the time. If you were playing Zelda, the game must first wait for you to decide which way you want to go before it can present the next part of the adventure. You could try and load all the possible results for all the possible decisions Link might make, but this rapidly becomes unfeasible. Additionally, sometimes software will generate _new_ instructions in response to certain results! These can be difficult to predict, and guessing them is nearly impossible
+Unfortunately, static compilation is very difficult. The software instructions often rely on results they can't know at the time. If you were playing Zelda, the game must first wait for you to decide which way you want to go before it can present the next part of the adventure. You could try and load all the possible results for all the possible decisions Link might make, but this rapidly becomes unfeasible. Additionally, sometimes software will generate _new_ instructions in response to certain results! These are difficult to predict, and it's impossible to create a table for every instruction that might come up.
 
 {{< /expandable >}}
 
@@ -98,7 +98,7 @@ This is a Raspberry Pi 4B. One of these small boys will set you back about £100
 |     **Memory**      |                2KB                |     2GB      |
 |   **Resolution**    |             256 x 240             |    4kp60     |
 
-It's often hard to appreciate how fast computing power improves relative to other technologies. The NES had 2 KB of memory, which is `2 * 1024` bytes. The Raspberry Pi has 2 **GB** of memory, which is `2 * 1024 * 1024 * 1024` bytes. Not to overdo it, but the little Pi has _one million_ times more memory than the Nintendo Entertainment System.
+It's often hard to appreciate how fast computing power improves relative to other technologies. The NES had 2 KB of memory, which is `2 * 1024` bytes. The Raspberry Pi has 2 **GB** of memory, which is `2 * 1024 * 1024 * 1024` bytes. Not to overstate it, but the little Pi has _one million_ times more memory than the Nintendo Entertainment System.
 
 This comparison speaks to something else about video games. A great video game isn't dependent on hardware. Some of the games we remember fondly don't require a big graphic load. Technology enables games, but is not the primary factor. 
 
