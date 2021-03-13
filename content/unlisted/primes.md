@@ -58,19 +58,13 @@ This observation is important in mathematics. It's called the **fundamental theo
 
 Now we know what these fundamental elements are, how do we find more?
 
-One way might be to pick a random number, and try and figure out if it is a prime number. We know that a prime number is one that cannot be divided evenly by any number less than itself. 5 is a prime number because it cannot be divided by 2, nor 3, nor 4. So we could pick a random number, let's say 87, and see if it can be divided by any number smaller than it.
+One way might be to pick a random number, and try and figure out if it is a prime number. We know that a prime number is one that cannot be divided evenly by any number less than itself. 5 is a prime number because it cannot be divided by 2, nor 3, nor 4. So we could pick a random number, let's say 87, and see if it can be properly divided by any number smaller than it.
 
 ![Alt](/pictures/primes/prime_finding_division.png#center)
 
+Dividing 87 by 3 gives a whole number, 29, so 87 cannot be prime. In fact, no multiple of 3 can be prime because that number is divisible by 3. This applies to other numbers too. No multiple of 2 can be a prime, no multiple of 5 can be a prime, etc. 
 
-
-
-
-
-
-It follows, then, that every number that 5 divides, cannot be prime. 10 must not be prime, because it is divided by 5. Same for 15, 20, 25. So on and so forth. The idea can be restated another way. A multiple of a prime number is not prime.
-
-Eratosthenes used this to make a sieve, of sorts. He started by making a table of numbers. Let's pick a small table to start, the table of numbers between 1 and 30.
+Eratosthenes, another ancient Greek, used this idea to devise a method of discovering primes. He started by making a table of numbers. Let's pick a small table to start, the table of numbers between 1 and 30.
 
 ![Alt](/pictures/primes/erastothenes_base.png#center)
 
@@ -86,7 +80,17 @@ Now, 4 has already been crossed off, so we move to the next number, 5. We repeat
 
 ![Alt](/pictures/primes/erastothenes_fives.png#center)
 
-All the numbers that remain uncoloured are prime. You may be wondering if we have to repeat this process with 7, 11, etc. We don't! {proof at the end? explanation}
+All the numbers that remain uncoloured are prime. 
+
+You may be wondering if we have to repeat this process with 7, 11, 13, etc. The answer is no, we don't, if we are only counting up to 30. 
+
+{{< expandable label="why not?" level="3" >}}
+
+One way to think of factors is like weights.
+
+
+
+{{</ expandable>}}
 
 ### to infinity, and beyond
 
@@ -106,13 +110,11 @@ Alright, some of you are saying yes, and some are saying no. The answer is **no*
 
 ### your first proof
 
-This may take a few attempts to grasp. Not because it is complicated, but because it requires that we be precise with our language. The nature of this precision requires that we use symbols in addition to words.
-
-Take the number 6. It's made up of two primes, 2 and 3. That is, 6 is the product of 2 and 3.
+Proving something beyond any doubt requires that we be precise with our language. The nature of this precision leads us to use symbols instead of words. Take the number 6. It's made up of two primes, 2 and 3.  We can say, "6 is the product of 2 and 3", or we can express the same idea with symbols.
 
 $$ 6 = 2 * 3 $$
 
-Another way of writing this is,
+More precisely, "6 is the product of two primes where the first prime is 2 and the second prime is 3". A better way of expressing this is,
 
 $$ 6 = p_1 * p_2 $$
 
@@ -122,27 +124,35 @@ $$ p_1 = 2 $$
 
 $$ p_2 = 3 $$
 
-Now suppose we pick a number at random. Let's call it **N**. We know this number, as with all numbers, must be made up of one or more primes.
+Now suppose we take a number that we don't know just yet. Let's call it **N**. We know this number, as with all numbers, must be made up of one or more primes. 
 
 $$ N = p_1 * p_2 * \cdots $$ 
 
-We're not sure exactly how many primes, so let's just say there are **m**
+We're not sure exactly how many primes, so let's just say there are **n** of them. **n** could be small (in the case of N=6, there are n=2 primes), or it could be large.
 
-$$ N = p_1 * p_2 * \cdots * p_m $$
+$$ N = p_1 * p_2 * \cdots * p_n $$
 
-Suppose that **m** is how many primes there are in total (wording?). We multiply all those primes together to get one number. 
+We're trying to prove the claim that there are an infinite number of primes. We'll start by immediately conceding.
+
+Let's assume that Team Run Out Of Primes are right. There are a limited number of primes. There might be a lot of them, but they do eventually end. We shall label this limited, *finite*, number of primes, **m**.
+
+$$ Primes = \\{p_1, p_2, p_3, \cdots, p_m\\} $$
+
+Then we'll make a new number, one that is made up of all of these primes. 
+
+
 
 Then we're going to add one. 
 
-Because numbers are infinite, we can always add one. No matter how stupendously large N may be, there is always another number.
+Because numbers are infinite, we can always add one. No matter how stupendously large N may be, there is always a bigger number.
 
 $$ N = p_1 * p_2 * \cdots * p_m + 1 $$
 
-Now we ask whether this new number, N + 1, is prime. We know how to do this already, we just try to divide it by every prime number smaller than it. 
+Now we ask whether this new number, N + 1, is prime. We already know how to do this, we just try to divide it by every prime number smaller than it. 
 
 ![Alt](/pictures/primes/prime_finding_division_proof.png#center)
 
-But every prime we try to divide N+1 with will not leave us with a whole number. There will always be a fraction left over.
+But every prime we attempt to divide N+1 with leaves us with a fraction, not a whole number.
 
 {{< expandable label="example" level="3">}}
 
@@ -164,9 +174,9 @@ $$ \frac{31}{5} = 6.2 $$
 
 {{< /expandable>}}
 
-If a number cannot be broken down into smaller whole number parts, then it is a prime number. So the number, N+1, is prime.
+If a number cannot be broken down into smaller whole number parts, then it is a prime number. Therefore, N+1 is prime.
 
-But earlier, we said that there are only **m** primes. We've shown that can't be true, because we found another prime number. So
+But wait a moment. 
 
 
 ---
