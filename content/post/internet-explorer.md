@@ -17,7 +17,9 @@ When I was fifteen I had (or I thought I had) this real funny desktop background
 
 ![Alt](/pictures/google_bit.jpg)
 
-Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system. The two ideas, at a high level, are analogous. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be subsequently delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mail centres all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
+Now, years later, I have a better background and a computer science degree. 
+
+But, it turns out that the internet and the post are similar. Consider how the postal service works. If you want to send a letter to someone else, you first wrap it an envelope. On that envelope you write the all the details the postman will need to deliver it: usually just the address of the recipient. You pop it in the post box, where it is subsequently taken to a mail centre. If the address is near by to the mail centre, that mail centre will deliver it. If not, it is moved to another mail centre from where it can be subsequently delivered. The internet works like this too. Just as the postal system is a collection of postboxes and mail centres all intertwined, the internet is a collection of computers and routers connected to each other. When data is sent from some computer, `A`, to another computer, `B`, it travels across this web of connected devices.
 
 ![Alt](/pictures/internet_explorer_1.png "Blue sky thinking")
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on adp</title>
+    <link>https://adpblg.co.uk/tags/</link>
+    <description>Recent content in Tags on adp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://adpblg.co.uk/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>exploration</title>
+      <link>https://adpblg.co.uk/tags/exploration/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/tags/exploration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>maps</title>
+      <link>https://adpblg.co.uk/tags/maps/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/tags/maps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>music</title>
+      <link>https://adpblg.co.uk/tags/music/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/tags/music/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lockdown</title>
+      <link>https://adpblg.co.uk/tags/lockdown/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/tags/lockdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>networks</title>
+      <link>https://adpblg.co.uk/tags/networks/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/tags/networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithms</title>
+      <link>https://adpblg.co.uk/tags/algorithms/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

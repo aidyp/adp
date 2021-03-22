@@ -88,6 +88,8 @@ You may be wondering if we have to repeat this process with 7, 11, 13, etc. The 
 
 One way to think of factors is like weights.
 
+{pictures to draw here}
+
 
 
 {{</ expandable>}}
@@ -176,7 +178,7 @@ $$ \frac{31}{5} = 6.2 $$
 
 If a number cannot be broken down into smaller whole number parts, then it is a prime number. Therefore, N+1 is prime.
 
-But wait a moment. 
+But wait a moment. We already have all the primes. There were only **m** of them. And N+1 
 
 
 ---

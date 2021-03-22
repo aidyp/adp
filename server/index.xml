@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>adp</title>
+    <link>https://adpblg.co.uk/</link>
+    <description>Recent content on adp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://adpblg.co.uk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>emulation: a link to the past</title>
+      <link>https://adpblg.co.uk/post/zelda/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/zelda/</guid>
+      <description>A friend of mine recently hosted an elimination tournament for the best video game of all time. We squared up the best games in a brutal winner-takes-all knockout bracket. As we advanced through the rounds, I noticed that the games performing best were the ones we&amp;rsquo;d played as kids. That&amp;rsquo;s not surprising, nostalgia has a powerful draw. While my co-competitors were passionately making the case for older games, I found myself wanting to play them again.</description>
+    </item>
+    
+    <item>
+      <title>some pointers in taste</title>
+      <link>https://adpblg.co.uk/post/taste/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/taste/</guid>
+      <description>Readers be warned! This is more technical than other posts of mine. I&amp;rsquo;ve been helping a friend learn some elements of programming, and the topic of memory came up.
+It may take a second read, but I think it&amp;rsquo;s well worth it!
+ In 2016 Linus Torvalds, who created Linux (the OS most of the internet runs on) and git (the content management system this blog uses), sat down for with Chris Anderson, who is in charge of Ted, for a chat.</description>
+    </item>
+    
+    <item>
+      <title>6</title>
+      <link>https://adpblg.co.uk/post/6/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/6/</guid>
+      <description>On 22 September the government announced that the rule of 6 would apply for 6 months. This post has some unrelated and mildly interesting facts to do with the number 6.
+ 6 is the perfect number 6 is a perfect number. That is, it is the sum of its proper divisors (all the numbers that divide it exactly, excluding the number itself). $$ 1 + 2 + 3 = 6 = 1 * 2 * 3 $$ 6 is the most perfect of all the perfect numbers.</description>
+    </item>
+    
+    <item>
+      <title>internet explorer</title>
+      <link>https://adpblg.co.uk/post/internet-explorer/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/internet-explorer/</guid>
+      <description>This blog post is an exploration into the wiring of the internet. When we move information across the internet, what does its path look like?
+ to boldly go where many have gone before addressing the internet When I was fifteen I had (or I thought I had) this real funny desktop background,
+Now, years later, I have a better background and a computer science degree. But it turns out that the internet is not so different from the postal system.</description>
+    </item>
+    
+    <item>
+      <title>counting change</title>
+      <link>https://adpblg.co.uk/post/counting-change/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/counting-change/</guid>
+      <description>A friend of mine wanted to learn how to code over lockdown. While helping him, I found myself reminiscing on my own learning experience.
+This post is a tour through one algorithm at increasing levels of complexity. By the end you&amp;rsquo;ll have a good grasp of the solution. You&amp;rsquo;ll also realise you knew the answer all along!
+ hello world When I first began my formal study of computer science at high school, my teacher asked me to write a program that would dispense change from a self-service machine.</description>
+    </item>
+    
+    <item>
+      <title>mapping music</title>
+      <link>https://adpblg.co.uk/post/mapping-music/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/mapping-music/</guid>
+      <description>I was going a bit mad during lockdown, and this was one of the small projects that kept me going.
+It also helped get me a job!
+ mapping music  During lockdown, like you, I&amp;rsquo;ve listened to a lot of music. I&amp;rsquo;ve listened to so much music that I&amp;rsquo;ve found myself thinking about how to think about the ways I listen to music.
+oh man you&amp;rsquo;re gonna love this next track At parties, when we used to have parties, I remember finding myself listening to a song and immediately thinking about what song I wanted to listen to next.</description>
+    </item>
+    
+  </channel>
+</rss>

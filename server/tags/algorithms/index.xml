@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithms on adp</title>
+    <link>https://adpblg.co.uk/tags/algorithms/</link>
+    <description>Recent content in algorithms on adp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://adpblg.co.uk/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>counting change</title>
+      <link>https://adpblg.co.uk/post/counting-change/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/counting-change/</guid>
+      <description>A friend of mine wanted to learn how to code over lockdown. While helping him, I found myself reminiscing on my own learning experience.
+This post is a tour through one algorithm at increasing levels of complexity. By the end you&amp;rsquo;ll have a good grasp of the solution. You&amp;rsquo;ll also realise you knew the answer all along!
+ hello world When I first began my formal study of computer science at high school, my teacher asked me to write a program that would dispense change from a self-service machine.</description>
+    </item>
+    
+  </channel>
+</rss>

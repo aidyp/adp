@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lockdown on adp</title>
+    <link>https://adpblg.co.uk/tags/lockdown/</link>
+    <description>Recent content in lockdown on adp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://adpblg.co.uk/tags/lockdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>6</title>
+      <link>https://adpblg.co.uk/post/6/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://adpblg.co.uk/post/6/</guid>
+      <description>On 22 September the government announced that the rule of 6 would apply for 6 months. This post has some unrelated and mildly interesting facts to do with the number 6.
+ 6 is the perfect number 6 is a perfect number. That is, it is the sum of its proper divisors (all the numbers that divide it exactly, excluding the number itself). $$ 1 + 2 + 3 = 6 = 1 * 2 * 3 $$ 6 is the most perfect of all the perfect numbers.</description>
+    </item>
+    
+  </channel>
+</rss>

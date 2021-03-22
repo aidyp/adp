@@ -6,9 +6,5 @@ This blog is a collection of thoughts and projects about computers and maths. It
 
 There are also jokes!
 
----
-
-I try to publish at a monthly cadence. The most recent post is
-
-### [some pointers in taste](/post/taste)
+### 
 

@@ -7,15 +7,17 @@ toc: false
 
 
 
-The Social Dilemma (Netflix) has been a huge hit. My personal opinion is that it's a little heavy handed, and that there are better advocates for data privacy that they could have interviewed.
+The Social Dilemma (Netflix) has been a huge hit.
 
-One thing that stood out to me was the treatment of Whatsapp. In the show, it was treated as one of a plethora of applications that Facebook use to gather data. It stood out to some of my friends too. Whatsapp is end-to-end encrypted. How could it ever be a source of data? The principle, as marketed, of end-to-end encryption is that nobody but you and the person you are talking to can read the messages. 
+One thing that stood out to me was the treatment of Whatsapp. In the show, it was included as one of a plethora of applications that Facebook use to gather data. Some of my friends noticed that too. Whatsapp is end-to-end encrypted. How could it ever be a source of data? The principle of end-to-end encryption, as marketed and widely understood, is that nobody but you and the person you are talking to can read the messages. 
 
-This blog post is about that. 
+This blog post is about why that's not _exactly_ accurate.
 
 ---
 
-I want to set out by saying I am _not_ accusing Facebook of reading your Whatsapp messages.
+I want to set out by saying I am _not_ accusing Facebook of reading your Whatsapp messages. I am saying that you cannot trust cryptography alone to protect your messages. First, what _does_ cryptography protect?
 
-The first thing to explore is end-to-end encryption. What is it?
+## end-to-end encryption
+
+
 
