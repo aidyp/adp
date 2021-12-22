@@ -10,9 +10,13 @@ Written with [Ewan Morgan](https://ewanmorgan.journoportfolio.com/)
 
 ---
 
-> It's interesting that the greatest minds of computer science, the founding fathers, like Alan Turing and Claude Shannon and Norbert Wiener, they all looked at chess as the ultimate test.       -- **Garry Kasparov**
+{{< blockquote author="Garry Kasparov" >}}
 
-My friend and I, like many others during lockdown, have become obsessed with chess. 
+It's interesting that the greatest minds of computer science, the founding fathers, like Alan Turing and Claude Shannon and Norbert Wiener, they all looked at chess as the ultimate test.
+
+{{< /blockquote >}}
+
+A friend and I, like others during lockdown, have developed a chess obsession. So when we found ourselves with an abundance of free time (I was on holiday and he is a writer), we decided to make a computer program to play chess.
 
 He recently [wrote an article](https://l.messenger.com/l.php?u=https%3A%2F%2Fslate.com%2Ftechnology%2F2021%2F02%2Fdeep-blue-garry-kasparov-25th-anniversary-computer-chess.html&h=AT1wyjL7NvQdVdDrfihLxfmAMRhKnMusFDENoxJVjJLwqxoknlhmIR4VIK4uCZcPN6j9Hq7N-nB7c8NMJzHF0gBtKcbDApsfHLII1in--uhkTQC0K643_aetMqafeMfHbqcSs-JDwFU) about the history of chess engines. So, when we found ourselves with an abundance of free time (I was on holiday and he is a writer), we decided to make our very own engine.
 

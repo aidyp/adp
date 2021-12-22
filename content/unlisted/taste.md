@@ -13,20 +13,20 @@ This is more technical than other posts of mine.
 
 {{< youtube id="o8NPllzkFhE?start=860" >}}
 
-In 2016 Linus Torvalds, who created Linux (the OS most of the internet runs on) and `git` (the content management system this blog uses), sat down for a chat with Chris Anderson, who is in charge of Ted (the place where smart people show off), for a chat. [The full interview](https://www.youtube.com/watch?v=o8NPllzkFhE) is about 22 minutes long. If you have the time, it's well worth watching.
+In 2016 Linus Torvalds, who created Linux (the OS most of the internet runs on), sat down for a chat with Chris Anderson, who is in charge of Ted (the place where smart people show off), for a chat. [The full interview](https://www.youtube.com/watch?v=o8NPllzkFhE) is about 22 minutes long. If you have the time, you should watch the whole thing.
 
 During the interview, Chris asks Linus about his concept of "taste" (@ 14:20, video will automatically start from here). Linus had brought two code snippets, one that was bad "taste" and one that was good "taste". He explained the difference between the two,
 
 > Sometimes you can see a problem in a different way and re-write it so that a special case goes away and becomes the normal case. And that's good code
 
-For me, this is the special sauce. Whatever reasons one is drawn to computer science, this is usually the reason they stay. By the end of this blog, you'll have the palette to appreciate why the second piece of code is in better taste, and I hope you'll derive some pleasure from it like the rest of us nerds.
+This is the special sauce. Whatever reasons one is drawn to computer science, this is usually the reason they stay. By the end of this blog, you'll have the palette to appreciate why the second piece of code is in better taste, and I hope you feel the rush.
 
 ---
 
 
 ### memory 
 
-Before we can appreciate the differences between these approaches (and also what's going on), we need a working understanding of computer memory. Here's a brief introduction.
+The code snippets that Linus brought concern **linked lists**, which is a way of managing computer memory. If you're already familiar with this concept, you can skip ahead to the [first method](#first-method)
 
 Imagine a row of lockers -- like the ones you had at school -- laid out in a line.
 
@@ -78,7 +78,7 @@ This is especially neat because the elements don't have to be close to each othe
 
 ![Alt](/pictures/taste/linked_list_mem_long.png#center)
 
-Then all we need to keep track of is the address of the first element. Given this first address, usually styled as the `head`, we can go forward in the list from there.
+Then all we need to keep track of is the first element. Once we have this first element, usually called the `head`, we can go forward in the list from there.
 
 In (C) code this idea is described like so,
 
@@ -90,11 +90,19 @@ struct ListElement
 };
 ```
 
-And then we have a special element, `head`, that marks the start of the list
+And then we have a special element, `head`, that marks the start of the list.
 
+```c
+ListElement * head = NULL;
+/* We reserve some memory for the element */
+head = (ListElement *)malloc(sizeof(ListElement))
+
+/* Then we can fill in the memory we have reserved */
+head->value = 'h';
+head->next_element = NULL; // For now there are no other elements
 ```
-ListElement* head = 
-```
+
+
 
 Because every element is linked to the next one, we need only keep track of the `head`. To get to any subsequent element, we simply start from the `head` and follow the links until we reach the desired element.
 
@@ -106,11 +114,9 @@ Because every element is linked to the next one, we need only keep track of the 
 
 ### first method
 
-We are now (at last!) equipped to understand both methods, and the 'aesthetic' qualities of the two. Both of them are concerned with the same task: how, given a list with some entries in it, can we remove an entry?
+Both methods are concerned with manipulating a linked list. Specifically, how can we remove an element from a linked list?
 
 The first method, the one in "bad" taste, is the natural way we might go about it. 
-
-
 
 Suppose we have the example linked list from earlier and we want to delete the second entry (the one containing the letter 'e').
 
@@ -182,13 +188,50 @@ It _can_ be better. If you take some time to think about the shape of the biscui
 
 ### second method
 
-Let's take a moment to re-examine the shape of our linked list. We have some blocks of memory connected to each other. At the beginning, we have the `head`. The `head` points to the first element of the list. That pointer must be stored _somewhere_ in memory. For the sake of pedagogy, let's say it's stored at `-1` 
+We're going to re-examine the shape of a linked list.
+
+#### shape of a linked list
+
+Let's start with the shape of a linked list. A linked list is made of elements. Each element has two very important properties,
+
+* That elements *points* to something.
+* That element is *pointed to* by something.
+
+In the case of elements in the middle of the list, these two 'somethings' are clear: they are other elements. An element in the middle of the list points to the next one, and is pointed to by the previous one.
+
+But what about the elements at the two ends of the list? The final element, let us call it the `tail`, points to `NULL` (to indicate the list is over). 
+
+The first element, points to the second element. But what is it pointed to by? 
+
+The variable, `head`. `head` is a pointer to the first element of the list. And that pointer is stored _somewhere_ in memory.
 
 ![Alt](/pictures/taste/linked_list_head.png#center)
 
-Now suppose we get the pointer to that one
+For simplicity, we will say `? = -1`, and that is the location in memory of the `head`, the pointer to the first element in the list.
 
-![Alt](/pictures/taste/linked_list_indirect.png#center)
+{diagram like above with the reference of `-1}
+
+This gives us a new way to think about how a linked list is structured. Each element has a pointer, somewhere in memory, that points to that element. We can list them out,
+1. The pointer at address `-1` points to the first element of the list. 
+2. The pointer at address `1` points to the second element of the list.
+3. The pointer at address `4` points to the third element of the list.
+4. The pointer at address `7` points to `NULL`, which terminates the the list.
+
+{diagram with all the pointers referenced}
+
+For a linked list, 'deleting' an element is equivalent to breaking the links for that element, and re-linking the element before and after. In method one, the strategy was to walk element-by-element to find the target for deletion. In method two, the strategy is to go _pointer-by-pointer_. To re-link an element, simply re-direct the previous pointer. Suppose we want to remove the second element of the list. We know that the pointer at address `1` points to the second element.
+
+{Diagram highlighting the pointer to the second element}
+
+Then, as before, we redirect that pointer to the third element. More precisely, we edit the pointer held in address `1`.
+
+{Diagram editing the pointer}
+
+This method works for the first element too. To delete the first element, simply edit the pointer at address `-1`.
+
+{Diagram doing the same for the first element}
+
+And that's it! One solution, that covers the whole problem.
 
 
 
@@ -212,3 +255,10 @@ remove_list_entry(entry)
 }
 ```
 {{< /expandable>}}
+
+---
+
+### exit(0)
+
+This is a small solution to a small problem. 
+
