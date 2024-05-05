@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blue on adp-blg</title>
+    <link>http://localhost:1313/tags/blue/</link>
+    <description>Recent content in Blue on adp-blg</description>
+    <generator>Hugo</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/blue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Into: Blogging</title>
+      <link>http://localhost:1313/posts/make-stuff/</link>
+      <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/make-stuff/</guid>
+      <description>Why you should write a blog.</description>
+    </item>
+  </channel>
+</rss>
